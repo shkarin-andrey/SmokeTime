@@ -1,0 +1,50 @@
+.accordion {
+  &__item {
+    border: 1px solid $purple;
+    border-radius: 10px;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+
+    &.active,
+    &:hover {
+      box-shadow: 0 0 10px $purple;
+    }
+
+    &__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 50px;
+      transition: all 0.3s;
+      cursor: pointer;
+
+      &.border-1 {
+        border-bottom: 1px solid $purple;
+      }
+
+      &-button {
+        transform: all 0.3s;
+      }
+      .rotate-0 {
+        transform: rotate(0);
+      }
+      .rotate-180 {
+        transform: rotate(180deg);
+      }
+
+      &-title {
+        font-size: 20px;
+        line-height: 24px;
+        margin: 0;
+      }
+    }
+    &__bottom {
+      padding: 20px 0;
+      color: $gray;
+    }
+  }
+  .hidden {
+    display: none;
+  }
+}

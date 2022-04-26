@@ -1,0 +1,20 @@
+@import "variables/variables";
+
+@import "modules/global";
+
+@import "modules/header";
+@import "modules/navigate";
+@import "modules/btn";
+@import "modules/intro";
+@import "modules/why";
+@import "modules/faq";
+@import "modules/accordion";
+@import "modules/about-company";
+@import "modules/brands";
+
+@import "modules/footer";
+
+.card {
+  background-color: transparent;
+  border: 1px solid $purple;
+}
