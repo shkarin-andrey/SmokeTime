@@ -12,7 +12,7 @@ interface iShopCard {
 }
 
 const ShopCard: FC<iShopCard> = ({ name, price, image, id }) => {
-  const [count, setCount] = useState("1");
+  const [count, setCount] = useState<number | string>("1");
 
   return (
     <Col md={3}>
