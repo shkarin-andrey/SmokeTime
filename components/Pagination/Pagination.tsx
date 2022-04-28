@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { FC } from "react";
 
 interface iPaginationList {
-  pages: string;
+  pages: number;
 }
 
 const PaginationList: FC<iPaginationList> = ({ pages }) => {
@@ -14,7 +14,7 @@ const PaginationList: FC<iPaginationList> = ({ pages }) => {
     <div className="pagination">
       <Link
         href={`/shop?page=${
-          +page !== 1 || page === undefined ? +page - 1 : page
+          +page > 1 || page !== undefined ? +page - 1 : page
         }`}
       >
         <a className="item">&lsaquo;</a>

@@ -1,28 +1,11 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import { Container, Row } from "reactstrap";
 import ShopCard from "../ShopCard/ShopCard";
 import { iDataItem } from "../../pages/api/shop";
 import PaginationList from "../Pagination/Pagination";
-import { useRouter } from "next/router";
+import { iData } from "../../pages/api/shop";
 
-const ShopCards: FC = () => {
-  const [shop, setShop] = useState([]);
-  const [pages, setPages] = useState("");
-
-  const router = useRouter();
-  const page = router.query.page;
-
-  useEffect(() => {
-    fetch(
-      `${process.env.BASE_URL}/api/shop?limit=20${page ? "&page=" + page : ""}`
-    )
-      .then((resp) => resp.json())
-      .then((shopData) => {
-        setShop(shopData.shop);
-        setPages(shopData.pages);
-      });
-  }, [page]);
-
+const ShopCards: FC<iData> = ({ shop, pages }) => {
   return (
     <section className="shop">
       <Container>

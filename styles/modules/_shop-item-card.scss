@@ -1,0 +1,36 @@
+.shop_item_card {
+    color: $gray;
+    margin-bottom: 50px;
+    span {
+        color: $white;
+        font-weight: 700;
+    }
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+
+    &__order {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .prev {
+            text-decoration: line-through;
+        }
+        .new {
+            font-size: 24px;
+            font-weight: 700;
+            color: $white;
+
+            span {
+                font-size: 16px;
+            }
+        }
+        .btn {
+            margin-top: 20px;
+        }
+    }
+}

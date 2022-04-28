@@ -4,7 +4,7 @@ import shop from "../../../db.json";
 
 export interface iData {
   shop: iDataItem[];
-  pages: number
+  pages?: number
 }
 
 export interface iDataItem {
