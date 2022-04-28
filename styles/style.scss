@@ -11,10 +11,8 @@
 @import "modules/accordion";
 @import "modules/about-company";
 @import "modules/brands";
+@import "modules/shop-card";
+@import "modules/pagination";
+@import "modules/map";
 
 @import "modules/footer";
-
-.card {
-  background-color: transparent;
-  border: 1px solid $purple;
-}

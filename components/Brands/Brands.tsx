@@ -4,7 +4,6 @@ import { Container } from "reactstrap";
 import imgHaski from "../../public/img/haski.png";
 
 const Brands = () => {
-  console.log(imgHaski);
   return (
     <section className="brands">
       <Container>

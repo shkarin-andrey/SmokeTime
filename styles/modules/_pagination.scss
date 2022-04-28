@@ -1,0 +1,19 @@
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    gap: 10px;
+  
+  .item {
+    display: block;
+    background: transparent;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #a000d8;
+
+    &.active {
+        background: #a000d8;
+        color: #fff;
+      }
+    }
+}

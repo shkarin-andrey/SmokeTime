@@ -1,0 +1,23 @@
+.map {
+    margin-top: 120px;
+    position: relative;
+
+    &__info {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 360px;
+        padding: 10px 20px 20px 20px;
+        background: $bg;
+        border-radius: 0 0 10px 10px;
+    }
+
+    &__item {
+        margin: 0;
+
+        span {
+            color: $gray;
+        }
+    }
+}
