@@ -1,20 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import shop from "../../../db.json";
-
-export interface iData {
-  shop: iDataItem[];
-  pages: number
-}
-
-export interface iDataItem {
-  id: string;
-  code: string;
-  name: string;
-  price: string;
-  EAN13: string;
-  weight: string;
-}
+import { iData } from "../../../type";
 
 export default async function handler(
   req: NextApiRequest,

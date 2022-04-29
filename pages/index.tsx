@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-// import Brands from "../components/Brands/Brands";
 import FAQ from "../components/FAQ/FAQ";
 import Intro from "../components/Intro/Intro";
 import Map from "../components/Map/Map";
@@ -12,7 +11,6 @@ const Home: NextPage = () => {
       <MainLayout>
         <Intro />
         <Why />
-        {/* <Brands /> */}
         <FAQ />
         <Map />
       </MainLayout>

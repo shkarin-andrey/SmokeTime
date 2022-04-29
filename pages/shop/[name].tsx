@@ -1,11 +1,11 @@
 import MainLayout from "../../layout";
 import { NextPage } from "next";
-import { iDataItem } from "../api/shop";
+import { iDataItem } from "../../type";
 import { Button, Col, Container, Row } from "reactstrap";
 import Image from "next/image";
-import img from "../../public/img/haski.png";
+import noImg from "../../public/img/no-img.png";
 
-const ShopItem: NextPage<iDataItem> = ({ id, name, price }) => {
+const ShopItem: NextPage<iDataItem> = ({ id, name, price, volume, strong }) => {
   return (
     <MainLayout>
       <h1 className="big-title">
@@ -15,7 +15,7 @@ const ShopItem: NextPage<iDataItem> = ({ id, name, price }) => {
         <Container>
           <Row>
             <Col md={4} className="d-flex justify-content-center">
-              <Image src={img} alt={name} />
+              <Image src={noImg} alt={name} />
             </Col>
             <Col md={8}>
               <div className="wrapper">
@@ -23,22 +23,24 @@ const ShopItem: NextPage<iDataItem> = ({ id, name, price }) => {
                   <div className="shop_item_card__info-item">
                     <span>Вкус:</span> с клубликой
                   </div>
+                  {strong ? (
+                    <div className="shop_item_card__info-item">
+                      <span>Крепость:</span> {strong}мг
+                    </div>
+                  ) : null}
+
                   <div className="shop_item_card__info-item">
-                    <span>Крепость:</span> 20мг
-                  </div>
-                  <div className="shop_item_card__info-item">
-                    <span>Объем:</span> 30мл
+                    <span>Объем:</span> {volume}мл
                   </div>
                   <div className="shop_item_card__info-item">
                     <span>Артикул:</span> FAS123DF
                   </div>
                 </div>
                 <div className="shop_item_card__order">
-                  <div className="prev">
-                    {+price.split(",")[0] * 1.2},00 руб.
-                  </div>
+                  <div className="prev">{price * 1.2},00 руб.</div>
                   <div className="new">
-                    {price} <span>руб.</span>
+                    {price}
+                    <span>,00 руб.</span>
                   </div>
                   <Button>Добавить в карзину</Button>
                 </div>

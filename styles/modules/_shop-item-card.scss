@@ -5,6 +5,9 @@
         color: $white;
         font-weight: 700;
     }
+    img {
+        object-fit: cover;
+    }
     .wrapper {
         display: flex;
         justify-content: space-between;

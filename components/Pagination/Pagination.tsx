@@ -13,9 +13,7 @@ const PaginationList: FC<iPaginationList> = ({ pages }) => {
   return (
     <div className="pagination">
       <Link
-        href={`/shop?page=${
-          +page > 1 || page !== undefined ? +page - 1 : page
-        }`}
+        href={`/shop?page=${+page <= 1 || page === undefined ? 1 : +page - 1}`}
       >
         <a className="item">&lsaquo;</a>
       </Link>

@@ -4,6 +4,8 @@
     padding: 20px;
     margin-bottom: 30px;
     transition: all .3s;
+    min-height: 390px;
+    justify-content: space-between;
 
     &:hover {
       box-shadow: 0 0 20px $purple;
@@ -16,6 +18,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-bottom: 20px;
+      cursor: pointer;
 
       img {
         transition: all .3s;
@@ -28,6 +32,8 @@
     }
     
     &__bottom {
+      border-top: 1px solid $purple;
+      padding-top: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;

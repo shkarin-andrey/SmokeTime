@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { FC } from "react";
 
-const Map = () => {
+const Map: FC = () => {
   return (
     <div className="map">
       <div className="map__info">
