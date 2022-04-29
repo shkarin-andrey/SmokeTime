@@ -7,7 +7,7 @@ export interface iDataItem {
   id: string;
   name: string;
   brand: string;
-  strong: number;
+  strong: number | null;
   volume: number;
   price: number;
 }
