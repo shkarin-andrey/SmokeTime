@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Row } from "reactstrap";
 import ShopCard from "../ShopCard/ShopCard";
-import { iData, iDataItem } from "../../type";
+import { iData, iDataItem } from "../../type/shopData";
 import PaginationList from "../Pagination/Pagination";
 
 const ShopCards: FC<iData> = ({ shop, pages }) => {
@@ -17,7 +17,7 @@ const ShopCards: FC<iData> = ({ shop, pages }) => {
           />
         ))}
       </Row>
-      <PaginationList pages={pages} />
+      {pages > 1 ? <PaginationList pages={pages} /> : null}
     </section>
   );
 };

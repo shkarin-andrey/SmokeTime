@@ -1,7 +1,7 @@
 import ShopCards from "../../components/ShopCards/ShopCards";
 import MainLayout from "../../layout";
 import { NextPage } from "next";
-import { iData } from "./../../type";
+import { iData } from "../../type/shopData";
 import { Col, Container, Row } from "reactstrap";
 import Filter from "../../components/Filter/Filter";
 
@@ -24,14 +24,25 @@ const Shop: NextPage<iData> = ({ shop, pages }) => {
 };
 
 Shop.getInitialProps = async ({ query }) => {
-  const page = query.page;
+  const { page, brand, strong, volume } = query;
 
-  const resp = await fetch(
-    `${process.env.BASE_URL}/api/shop?limit=21${page ? "&page=" + page : ""}`
-  );
-  const shop = await resp.json();
+  if (brand || strong || volume || page) {
+    const url = `${process.env.BASE_URL}/api/shop?limit=21${
+      brand ? "&brand=" + brand : ""
+    }${strong ? "&strong=" + strong : ""}${page ? "&page=" + page : ""}`;
 
-  return { ...shop };
+    const resp = await fetch(url);
+    const shop = await resp.json();
+    return { ...shop };
+  } else {
+    const url = `${process.env.BASE_URL}/api/shop?&limit=21${
+      page ? "&page=" + page : ""
+    }`;
+
+    const resp = await fetch(url);
+    const shop = await resp.json();
+    return { ...shop };
+  }
 };
 
 export default Shop;

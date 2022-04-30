@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC, useState } from "react";
 import { Button, Col, Input } from "reactstrap";
@@ -16,6 +15,12 @@ const ShopCard: FC<iShopCard> = ({ name, price, image, id }) => {
   const [count, setCount] = useState<number | string>(1);
   const router = useRouter();
 
+  const down = () => {
+    if (+count > 1) {
+      setCount(+count - 1);
+    }
+  };
+
   return (
     <Col md={4}>
       <div className="card">
@@ -26,7 +31,7 @@ const ShopCard: FC<iShopCard> = ({ name, price, image, id }) => {
         <div className="card__bottom">
           <div className="card__bottom__order">
             <div className="card__bottom__order-input">
-              <div className="down" onClick={() => setCount(+count - 1)}>
+              <div className="down" onClick={down}>
                 &mdash;
               </div>
               <Input

@@ -1,6 +1,6 @@
 import MainLayout from "../../layout";
 import { NextPage } from "next";
-import { iDataItem } from "../../type";
+import { iDataItem } from "../../type/shopData";
 import { Button, Col, Container, Row } from "reactstrap";
 import Image from "next/image";
 import noImg from "../../public/img/no-img.png";

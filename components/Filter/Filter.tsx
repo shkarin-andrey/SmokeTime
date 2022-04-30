@@ -1,17 +1,26 @@
-import { FC, useState } from "react";
+import { ChangeEvent, FC } from "react";
 import { FormGroup, Input, Label } from "reactstrap";
 import { filterSelect } from "./filterSelect";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  brandFilter,
+  searchFilter,
+  strongFilter,
+  volumeFilter,
+} from "../../store/actions/filter";
+import { FilterState } from "../../type/filter";
+import { useRouter } from "next/router";
+
+interface iFilter {
+  shopFilter: FilterState;
+}
 
 const Filter: FC = () => {
-  const [search, setSearch] = useState("");
-  const [brand, setBrand] = useState("all");
-  const [strong, setStrong] = useState("all");
-  const [volume, setVolume] = useState("30");
-
-  console.log("search", search);
-  console.log("brand", brand);
-  console.log("strong", strong);
-  console.log("volume", volume);
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const { search, brand, strong, volume } = useSelector(
+    (state: iFilter) => state.shopFilter
+  );
 
   return (
     <div className="filter">
@@ -20,7 +29,9 @@ const Filter: FC = () => {
         placeholder="Поиск..."
         name="search"
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          dispatch(searchFilter(e.target.value))
+        }
       />
       <FormGroup className="mt-3">
         <Label for="exampleSelect">Бренд</Label>
@@ -29,7 +40,10 @@ const Filter: FC = () => {
           name="brand"
           type="select"
           value={brand}
-          onChange={(e) => setBrand(e.target.value)}
+          onChange={(e) => {
+            dispatch(brandFilter(e.target.value));
+            router.push(`/shop?brand=${e.target.value}&page=1`);
+          }}
         >
           {filterSelect.brands.map((item, i) => (
             <option key={i} value={item.value}>
@@ -45,7 +59,10 @@ const Filter: FC = () => {
           name="strong"
           type="select"
           value={strong}
-          onChange={(e) => setStrong(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            dispatch(strongFilter(e.target.value));
+            router.push(`/shop?strong=${e.target.value}&page=1`);
+          }}
         >
           {filterSelect.strong.map((item, i) => (
             <option key={i} value={item.value}>
@@ -58,10 +75,12 @@ const Filter: FC = () => {
         <Label for="exampleSelect">Объем</Label>
         <Input
           id="exampleSelect"
-          name="brand"
+          name="volume"
           type="select"
           value={volume}
-          onChange={(e) => setVolume(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            dispatch(volumeFilter(e.target.value))
+          }
         >
           {filterSelect.volume.map((item, i) => (
             <option key={i} value={item}>

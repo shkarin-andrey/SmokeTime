@@ -5,8 +5,6 @@ import Modal from "../../components/Modal/Modal";
 import Navigate from "../../components/Navigate/Navigate";
 
 const Header = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-
   return (
     <header className="header">
       <Container>
@@ -23,21 +21,17 @@ const Header = () => {
             md={2}
             className="offset-md-2 d-flex flex-column align-items-end"
           >
-            <Link href="tel:+79999999999">
-              <a className="phone">+7 (999) 999-99-99</a>
+            <Link href="tel:+79272971619">
+              <a className="phone">+7 (927) 297-16-19</a>
             </Link>
-            <Button onClick={() => setModalOpen(!modalOpen)}>
+            <Button onClick={() => console.log("click")}>
               Перезвоните мне!
             </Button>
           </Col>
         </Row>
       </Container>
-      {modalOpen ? <Modal /> : null}
     </header>
   );
 };
 
 export default Header;
-function setState(arg0: boolean): [any, any] {
-  throw new Error("Function not implemented.");
-}

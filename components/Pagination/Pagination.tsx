@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC } from "react";
-
+import ListPagination from "./ListPagination";
 interface iPaginationList {
   pages: number;
 }
@@ -9,97 +9,55 @@ interface iPaginationList {
 const PaginationList: FC<iPaginationList> = ({ pages }) => {
   const router = useRouter();
   const page: any = router.query.page;
+  const urlBrand: any = router.query.brand;
+  const urlStrong: any = router.query.strong;
+
+  const href = `/shop?${urlBrand ? `brand=${urlBrand}&` : ""}${
+    urlStrong ? `strong=${urlStrong}&` : ""
+  }`;
+
+  let list: number[] = [];
+
+  for (let i = 2; i < pages; i++) {
+    list.push(i);
+  }
 
   return (
     <div className="pagination">
       <Link
-        href={`/shop?page=${+page <= 1 || page === undefined ? 1 : +page - 1}`}
+        href={`${href}page=${+page <= 1 || page === undefined ? 1 : +page - 1}`}
       >
         <a className="item">&lsaquo;</a>
       </Link>
+      <Link href={`${href}page=1`}>
+        <a
+          className={`item ${
+            page === undefined || page === "1" ? "active" : ""
+          }`}
+        >
+          1
+        </a>
+      </Link>
 
-      {page === undefined || +page < 4 ? (
-        <>
-          <Link href={`/shop?page=1`}>
+      {pages <= 7 &&
+        list.map((item) => (
+          <Link key={item} href={`${href}page=${item}`}>
             <a
               className={`item ${
-                page === undefined || page === "1" ? "active" : ""
+                page === undefined || +page === item ? "active" : ""
               }`}
             >
-              1
+              {item}
             </a>
           </Link>
-          <Link href={`/shop?page=2`}>
-            <a className={`item ${page === "2" ? "active" : ""}`}>2</a>
-          </Link>
-          <Link href={`/shop?page=3`}>
-            <a className={`item ${page === "3" ? "active" : ""}`}>3</a>
-          </Link>
-          <Link href={`/shop?page=4`}>
-            <a className={`item ${page === "4" ? "active" : ""}`}>4</a>
-          </Link>
-          <div>...</div>
-          <Link href={`/shop?page=${pages}`}>
-            <a className="item">{pages}</a>
-          </Link>
-        </>
-      ) : (
-        ""
-      )}
+        ))}
 
-      {+page >= 4 && +page <= +pages - 3 && (
-        <>
-          <Link href={`/shop?page=1`}>
-            <a className="item">1</a>
-          </Link>
-          <div>...</div>
-          <Link href={`/shop?page=${+page - 1}`}>
-            <a className="item">{+page - 1}</a>
-          </Link>
-          <Link href={`/shop?page=${page}`}>
-            <a className="item active">{page}</a>
-          </Link>
-          <Link href={`/shop?page=${+page + 1}`}>
-            <a className="item">{+page + 1}</a>
-          </Link>
-          <div>...</div>
-          <Link href={`/shop?page=${pages}`}>
-            <a className="item">{pages}</a>
-          </Link>
-        </>
-      )}
+      {pages > 7 && <ListPagination page={page} pages={pages} href={href} />}
 
-      {+pages - 3 < +page && (
-        <>
-          <Link href={`/shop?page=1`}>
-            <a className="item">1</a>
-          </Link>
-          <div>...</div>
-          <Link href={`/shop?page=${+pages - 3}`}>
-            <a className={`item ${+page === +pages - 3 ? "active" : ""}`}>
-              {+pages - 3}
-            </a>
-          </Link>
-          <Link href={`/shop?page=${+pages - 2}`}>
-            <a className={`item ${+page === +pages - 2 ? "active" : ""}`}>
-              {+pages - 2}
-            </a>
-          </Link>
-          <Link href={`/shop?page=${+pages - 1}`}>
-            <a className={`item ${+page === +pages - 1 ? "active" : ""}`}>
-              {+pages - 1}
-            </a>
-          </Link>
-
-          <Link href={`/shop?page=${pages}`}>
-            <a className={`item ${+page === +pages ? "active" : ""}`}>
-              {pages}
-            </a>
-          </Link>
-        </>
-      )}
-
-      <Link href={`/shop?page=${page < pages ? +page + 1 : page}`}>
+      <Link href={`${href}page=${pages}`}>
+        <a className={`item ${+page === +pages ? "active" : ""}`}>{pages}</a>
+      </Link>
+      <Link href={`${href}page=${page < pages ? +page + 1 : page}`}>
         <a className="item">&rsaquo;</a>
       </Link>
     </div>
