@@ -24,13 +24,14 @@ const Shop: NextPage<iData> = ({ shop, pages }) => {
 };
 
 Shop.getInitialProps = async ({ query }) => {
-  const { page, brand, strong, volume } = query;
+  const { page, brand, strong, volume, search } = query;
+  const url = `${process.env.BASE_URL}/api/shop?limit=21${
+    brand ? "&brand=" + brand : ""
+  }${strong ? "&strong=" + strong : ""}${search ? "&search=" + search : ""}${
+    page ? "&page=" + page : ""
+  }`;
 
   if (brand || strong || volume || page) {
-    const url = `${process.env.BASE_URL}/api/shop?limit=21${
-      brand ? "&brand=" + brand : ""
-    }${strong ? "&strong=" + strong : ""}${page ? "&page=" + page : ""}`;
-
     const resp = await fetch(url);
     const shop = await resp.json();
     return { ...shop };

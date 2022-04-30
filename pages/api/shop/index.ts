@@ -7,7 +7,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<iData>
 ) {
-  const { limit, page, brand, strong, volume } = req.query
+  const { limit, page, brand, strong, volume, search }: any = req.query
   const prev = (+page - 1) * +limit
   const next = (prev || 0) + +limit
 
@@ -22,6 +22,10 @@ export default async function handler(
     const filterStrong = shop.shop.filter(item => item.strong === +strong)
     pages = Math.ceil(filterStrong.length / +limit)
     result = filterStrong.slice(prev, next);
+  } else if (search && search !== '') {
+    const filterSearch = shop.shop.filter(item => item.name.toLowerCase().search(search.toLowerCase()) !== -1)
+    pages = Math.ceil(filterSearch.length / +limit)
+    result = filterSearch.slice(prev, next);
   } else {
     pages = Math.ceil(shop.shop.length / +limit)
     result = shop.shop.slice(prev, next);

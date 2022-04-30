@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Button, Col, Container, Row } from "reactstrap";
+import { filterSelect } from "../../components/Filter/filterSelect";
 import { routes } from "../../routes";
 
 const Footer = () => {
@@ -31,26 +32,16 @@ const Footer = () => {
           <Col md={3} className="footer-top">
             <h4>Бренды</h4>
             <ul>
-              <li>
-                <Link href="/">
-                  <a>Haski</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <a>Haski</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <a>Haski</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/">
-                  <a>Haski</a>
-                </Link>
-              </li>
+              {filterSelect.brands.map(
+                (item) =>
+                  item.value !== "all" && (
+                    <li key={item.name}>
+                      <Link href={`/shop?brand=${item.value}&page=1`}>
+                        <a>{item.name}</a>
+                      </Link>
+                    </li>
+                  )
+              )}
             </ul>
           </Col>
           <Col md={3} className="footer-top">

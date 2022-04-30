@@ -29,9 +29,10 @@ const Filter: FC = () => {
         placeholder="Поиск..."
         name="search"
         value={search}
-        onChange={(e: ChangeEvent<HTMLInputElement>) =>
-          dispatch(searchFilter(e.target.value))
-        }
+        onChange={(e: ChangeEvent<HTMLInputElement>) => {
+          dispatch(searchFilter(e.target.value));
+          router.push(`/shop?search=${e.target.value}&page=1`);
+        }}
       />
       <FormGroup className="mt-3">
         <Label for="exampleSelect">Бренд</Label>

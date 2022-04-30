@@ -9,12 +9,13 @@ interface iPaginationList {
 const PaginationList: FC<iPaginationList> = ({ pages }) => {
   const router = useRouter();
   const page: any = router.query.page;
-  const urlBrand: any = router.query.brand;
-  const urlStrong: any = router.query.strong;
+  const brand: any = router.query.brand;
+  const strong: any = router.query.strong;
+  const search: any = router.query.search;
 
-  const href = `/shop?${urlBrand ? `brand=${urlBrand}&` : ""}${
-    urlStrong ? `strong=${urlStrong}&` : ""
-  }`;
+  const href = `/shop?${brand ? `brand=${brand}&` : ""}${
+    strong ? `strong=${strong}&` : ""
+  }${search ? `search=${search}&` : ""}`;
 
   let list: number[] = [];
 
