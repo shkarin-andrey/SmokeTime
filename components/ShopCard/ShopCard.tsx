@@ -1,8 +1,10 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Button, Col, Input } from "reactstrap";
 import noImg from "../../public/img/no-img.png";
+import { useDispatch, useSelector } from "react-redux";
+import { addCart, countCart } from "../../store/actions/cart";
 
 interface iShopCard {
   name: string;
@@ -12,13 +14,23 @@ interface iShopCard {
 }
 
 const ShopCard: FC<iShopCard> = ({ name, price, image, id }) => {
-  const [count, setCount] = useState<number | string>(1);
+  const [count, setCount] = useState<number>(1);
   const router = useRouter();
+  const dispatch = useDispatch();
+  const state = useSelector((state: any) => state.shopCart);
 
   const down = () => {
     if (+count > 1) {
       setCount(+count - 1);
     }
+  };
+
+  const stateCart = {
+    id,
+    name,
+    price,
+    sum: +count * price,
+    count,
   };
 
   return (
@@ -38,13 +50,22 @@ const ShopCard: FC<iShopCard> = ({ name, price, image, id }) => {
                 type="number"
                 bsSize={"sm"}
                 value={count}
-                onChange={(e) => setCount(e.target.value)}
+                onChange={(e) => setCount(Number(e.target.value))}
               />
               <div className="up" onClick={() => setCount(+count + 1)}>
                 &#10010;
               </div>
             </div>
-            <Button>Заказать</Button>
+            <Button
+              onClick={() => {
+                dispatch(addCart(stateCart));
+                dispatch(countCart(state.count + count));
+                console.log(state.count + +count);
+                console.log(state.count);
+              }}
+            >
+              Заказать
+            </Button>
           </div>
           <div className="card__bottom__price">
             <div className="card__bottom__price-prev">

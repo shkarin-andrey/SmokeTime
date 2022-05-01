@@ -5,7 +5,7 @@ export const routes = [
   },
   {
     path: "/shop",
-    name: "Жидкости",
+    name: "Товары",
   },
   {
     path: "/delivery",
