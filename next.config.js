@@ -8,8 +8,8 @@ const nextConfig = {
     includePaths: [path.join(__dirname, "styles")],
   },
   env: {
-    BASE_URL: "http://localhost:3000",
-    // BASE_URL: "https://smoke-time.herokuapp.com/",
+    // BASE_URL: "http://localhost:3000",
+    BASE_URL: "https://smoke-time.herokuapp.com/",
   },
 };
 
