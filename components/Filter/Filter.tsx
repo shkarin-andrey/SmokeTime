@@ -1,4 +1,4 @@
-import { ChangeEvent, FC } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import { FormGroup, Input, Label } from "reactstrap";
 import { filterSelect } from "./filterSelect";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,9 +18,12 @@ interface iFilter {
 const Filter: FC = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { search, brand, strong, volume } = useSelector(
+  const { brand, strong, volume } = useSelector(
     (state: iFilter) => state.shopFilter
   );
+
+  const [value, setValue] = useState<string>("");
+  const [timer, setTimer] = useState<any>(null);
 
   return (
     <div className="filter">
@@ -28,10 +31,18 @@ const Filter: FC = () => {
       <Input
         placeholder="Поиск..."
         name="search"
-        value={search}
+        value={value}
         onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          dispatch(searchFilter(e.target.value));
-          router.push(`/shop?search=${e.target.value}&page=1`);
+          setValue(e.target.value);
+          if (timer) {
+            clearInterval(timer);
+          }
+          setTimer(
+            setTimeout(() => {
+              dispatch(searchFilter(e.target.value));
+              router.push(`/shop?search=${e.target.value}&page=1`);
+            }, 500)
+          );
         }}
       />
       <FormGroup className="mt-3">
@@ -41,7 +52,7 @@ const Filter: FC = () => {
           name="brand"
           type="select"
           value={brand}
-          onChange={(e) => {
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
             dispatch(brandFilter(e.target.value));
             router.push(`/shop?brand=${e.target.value}&page=1`);
           }}
