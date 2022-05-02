@@ -9,7 +9,7 @@ export const routes = [
   },
   {
     path: "/delivery",
-    name: "Доставка",
+    name: "Доставка и оплата",
   },
   {
     path: "/contacts",

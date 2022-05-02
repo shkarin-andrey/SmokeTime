@@ -3,9 +3,12 @@ import { useRouter } from "next/router";
 import { FC } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
 import mainImg from "../../public/img/main-img.png";
+import { useDispatch } from "react-redux";
+import { openModalAction } from "../../store/actions/modal";
 
 const Intro: FC = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
   return (
     <section className="intro">
       <Container>
@@ -21,9 +24,14 @@ const Intro: FC = () => {
             </p>
             <div className="intro__btns">
               <Button onClick={() => router.push("/shop")}>
-                Посмотреть каталог
+                Посмотреть товары
               </Button>
-              <Button className="btn-outline">Сделать заказ</Button>
+              <Button
+                className="btn-outline"
+                onClick={() => dispatch(openModalAction(true))}
+              >
+                Проконсультироваться
+              </Button>
             </div>
           </Col>
           <Col md={6}>
