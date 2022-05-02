@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button, Col, Container, Row } from "reactstrap";
 import { filterSelect } from "../../components/Filter/filterSelect";
+import Modal from "../../components/Modal/Modal";
 import { routes } from "../../routes";
 
 const Footer = () => {
@@ -77,6 +78,7 @@ const Footer = () => {
           </Col>
         </Row>
       </Container>
+      <Modal />
     </footer>
   );
 };
