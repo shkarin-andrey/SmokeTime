@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from "react";
 import { Button, Col, Input } from "reactstrap";
 import noImg from "../../public/img/no-img.png";
 import { useDispatch, useSelector } from "react-redux";
-import { addCart, countCart } from "../../store/actions/cart";
+import { addCart, countCart, sumCart } from "../../store/actions/cart";
 
 interface iShopCard {
   name: string;
@@ -60,8 +60,7 @@ const ShopCard: FC<iShopCard> = ({ name, price, image, id }) => {
               onClick={() => {
                 dispatch(addCart(stateCart));
                 dispatch(countCart(state.count + count));
-                console.log(state.count + +count);
-                console.log(state.count);
+                dispatch(sumCart(state.sum + count * price));
               }}
             >
               Заказать

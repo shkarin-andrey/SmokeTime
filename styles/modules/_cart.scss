@@ -1,6 +1,6 @@
 table {
   tbody {
-    border-top: 2px solid $purple !important;
+    border-top: 2px solid White !important;
   }
   td,
   th {
@@ -12,8 +12,14 @@ table {
     &:nth-child(4) {
       text-align: center;
     }
+    &:nth-child(5) {
+      text-align: center;
+    }
+  }
+  td {
     &:last-child {
-      text-align: end;
+      text-align: center;
+      cursor: pointer;
     }
   }
 }
@@ -53,5 +59,13 @@ table {
     justify-content: center;
     align-items: center;
     font-size: 10px;
+  }
+}
+
+.cart__count,
+.cart__sum {
+  span {
+    font-size: 24px;
+    font-weight: 700;
   }
 }

@@ -1,5 +1,5 @@
 export interface CartState {
-  sum: string
+  sum: number
   count: number
   cart: iCart[]
 }
