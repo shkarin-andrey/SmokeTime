@@ -1,15 +1,24 @@
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { routes } from "../../routes";
 import { useRouter } from "next/router";
 
 const Navigate: FC = () => {
   const router = useRouter();
   const activeRouter = router.pathname;
+  const [show, setShow] = useState(false);
 
   return (
-    <nav className="navigate">
+    <nav className={`navigate ${show ? "active" : ""}`}>
+      <div className={`hamburger`} onClick={() => setShow(!show)}>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <ul className="navigate-list">
+        <div className={`close`} onClick={() => setShow(false)}>
+          &#10008;
+        </div>
         {routes.map((item) => (
           <li key={item.path} className="navigate-item">
             <Link href={item.path}>

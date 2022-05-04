@@ -6,7 +6,7 @@ const Contacts = () => {
     <MainLayout>
       <h1 className="big-title">Контакты</h1>
       <Container>
-        <Row>
+        <Row className="align-items-center">
           <Col md={6}>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -18,9 +18,9 @@ const Contacts = () => {
               aliquam.
             </p>
           </Col>
-          <Col md={6}>
+          <Col className="mt-3 mt-md-0" md={6}>
             <Form>
-              <h2 className="title">Остались вопросы? Пишите:</h2>
+              <h2 className="title mb-2">Остались вопросы? Пишите:</h2>
               <Input className="mb-2" placeholder="Введите имя" required />
               <Input
                 className="mb-2"

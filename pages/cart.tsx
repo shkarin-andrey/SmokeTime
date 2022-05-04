@@ -32,11 +32,14 @@ const Cart = () => {
         </Row>
         {cart.length > 0 ? (
           <Row className="mt-5 mb-5">
-            <Col md={6}>
+            <Col md={7} lg={6} className="order-2 order-md-1">
               <OrderBuy />
             </Col>
-            <Col md={3} className="offset-md-3">
-              <h2 className="title text-start">Итого:</h2>
+            <Col
+              md={3}
+              className="offset-lg-3 offset-md-2 text-center text-md-start order-1 order-md-2 mb-5 mb-md-0"
+            >
+              <h2 className="title text-md-start text-center">Итого:</h2>
               <div className="cart__count">
                 Количество:{" "}
                 <span>{new Intl.NumberFormat("ru-RU").format(count)}</span> шт.

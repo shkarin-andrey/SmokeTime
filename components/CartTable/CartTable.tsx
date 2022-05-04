@@ -24,7 +24,7 @@ const CartTable: FC = () => {
   };
 
   return (
-    <Table bordered>
+    <Table bordered responsive>
       <thead>
         <tr>
           <th>№</th>

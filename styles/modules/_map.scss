@@ -1,23 +1,36 @@
 .map {
-    margin-top: 120px;
-    position: relative;
+  margin-top: 120px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  &__info {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 360px;
+    padding: 10px 20px 20px 20px;
+    background: $bg;
+    border-radius: 0 0 10px 10px;
+  }
+
+  &__item {
+    margin: 0;
+
+    span {
+      color: $gray;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .map {
+    margin-top: 80px;
 
     &__info {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        max-width: 360px;
-        padding: 10px 20px 20px 20px;
-        background: $bg;
-        border-radius: 0 0 10px 10px;
+      position: relative;
+      text-align: center;
     }
-
-    &__item {
-        margin: 0;
-
-        span {
-            color: $gray;
-        }
-    }
+  }
 }

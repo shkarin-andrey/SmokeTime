@@ -14,15 +14,15 @@ const Intro: FC = () => {
       <Container>
         <Row className="align-items-center">
           <Col md={6}>
-            <h1 className="big-title">
+            <h1 className="big-title text-center text-md-start mt-5 mt-md-0">
               Оптовый магазин жидкостей для вейпа SMOKE TIME
             </h1>
-            <p className="intro__descr">
+            <p className="intro__descr text-center text-md-start">
               <span>Качественные товары</span> да еще и по{" "}
               <span>низким ценам!</span> Успей <span>заказать</span> пока все не
               разобрали!
             </p>
-            <div className="intro__btns">
+            <div className="intro__btns justify-content-center justify-content-md-start">
               <Button onClick={() => router.push("/shop")}>
                 Посмотреть товары
               </Button>

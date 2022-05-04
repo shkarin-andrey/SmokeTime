@@ -34,7 +34,7 @@ const ShopCard: FC<iShopCard> = ({ name, price, image, id }) => {
   };
 
   return (
-    <Col md={4}>
+    <Col sm={6} xl={4}>
       <div className="card">
         <div className="card__top" onClick={() => router.push("/shop/" + id)}>
           <Image src={image ? image : noImg} alt={name} />

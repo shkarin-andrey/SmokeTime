@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="footer">
       <Container>
         <Row>
-          <Col md={3}>
+          <Col sm={6} lg={3} className="mb-5 text-center text-lg-start">
             <Link href="/">
               <a className="logo">SmokeTime</a>
             </Link>
@@ -18,7 +18,7 @@ const Footer = () => {
             </p>
             <Button>Сделать заказ</Button>
           </Col>
-          <Col md={3} className="footer-top">
+          <Col sm={6} lg={3} className="footer-top mb-5 text-center">
             <h4>Меню</h4>
             <ul>
               {routes.map((item) => (
@@ -30,7 +30,7 @@ const Footer = () => {
               ))}
             </ul>
           </Col>
-          <Col md={3} className="footer-top">
+          <Col sm={6} lg={3} className="footer-top mb-5 text-center">
             <h4>Бренды</h4>
             <ul>
               {filterSelect.brands.map(
@@ -45,19 +45,19 @@ const Footer = () => {
               )}
             </ul>
           </Col>
-          <Col md={3} className="footer-top">
+          <Col sm={6} lg={3} className="footer-top mb-5 text-center">
             <h4>Контакты</h4>
             <ul>
               <li>
                 <span>Email:</span>{" "}
                 <Link href="mailto:info@domen.ru">
-                  <a className="gray">info@domen.ru</a>
+                  <a className="gray text-nowrap">info@domen.ru</a>
                 </Link>
               </li>
               <li>
                 <span>Телефон:</span>{" "}
                 <Link href="tel:+79272971619">
-                  <a className="gray">+7 (927) 297-16-19</a>
+                  <a className="gray text-nowrap">+7 (927) 297-16-19</a>
                 </Link>
               </li>
               <li>

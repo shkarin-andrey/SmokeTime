@@ -1,4 +1,27 @@
 .navigate {
+  .hamburger {
+    position: relative;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 40px;
+    height: 30px;
+
+    span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: white;
+    }
+  }
+
+  &.active {
+    &-list {
+      display: flex;
+    }
+  }
+
   &-list {
     list-style-type: none;
     padding: 0;
@@ -6,9 +29,71 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
+
+    .close {
+      display: none;
+      font-size: 24px;
+      color: $bg;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+    }
+
     .active {
       color: $menu-purple;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .navigate {
+    .hamburger {
+      display: flex;
+    }
+    &-list {
+      display: none;
+    }
+    &.active {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 10;
+
+      .navigate-list {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        height: 100%;
+        width: 300px;
+        background: $white;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 20px;
+
+        .close {
+          display: block;
+        }
+
+        .navigate-item {
+          width: 100%;
+        }
+
+        .navigate-link {
+          width: 100%;
+          color: $bg;
+          font-weight: 700;
+          font-size: 24px;
+
+          &.active {
+            color: $menu-purple;
+          }
+        }
+      }
     }
   }
 }

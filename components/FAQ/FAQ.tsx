@@ -8,7 +8,7 @@ const FAQ = () => {
       <Container>
         <h2 className="title">Часто задаваемые вопросы</h2>
         <Row className="mt-5">
-          <Col md={8} className="offset-md-2">
+          <Col xl={8} className="offset-xl-2">
             <Accordion accordionList={accordionList} />
           </Col>
         </Row>

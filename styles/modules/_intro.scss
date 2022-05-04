@@ -22,7 +22,16 @@
 
   &__btns {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     margin-top: 60px;
+  }
+}
+
+@media (max-width: 991px) {
+  .intro {
+    .big-title {
+      font-size: 45px;
+    }
   }
 }

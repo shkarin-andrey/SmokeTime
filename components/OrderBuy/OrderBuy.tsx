@@ -6,7 +6,7 @@ const OrderBuy: FC = () => {
     <Form>
       <h2 className="title">Оформление заказа</h2>
       <Row>
-        <Col md={4}>
+        <Col md={6} lg={4}>
           <FormGroup>
             <Label for="exampleLastName">Фамилия</Label>
             <Input
@@ -17,7 +17,7 @@ const OrderBuy: FC = () => {
             />
           </FormGroup>
         </Col>
-        <Col md={4}>
+        <Col md={6} lg={4}>
           <FormGroup>
             <Label for="exampleFirstName">Имя</Label>
             <Input
@@ -28,7 +28,7 @@ const OrderBuy: FC = () => {
             />
           </FormGroup>
         </Col>
-        <Col md={4}>
+        <Col md={12} lg={4}>
           <FormGroup>
             <Label for="examplePatronymic">Отчество</Label>
             <Input
@@ -41,15 +41,6 @@ const OrderBuy: FC = () => {
         </Col>
       </Row>
       <FormGroup>
-        <Label for="exampleEmail">Email</Label>
-        <Input
-          id="exampleEmail"
-          name="email"
-          placeholder="Введите email адрес"
-          type="email"
-        />
-      </FormGroup>
-      <FormGroup>
         <Label for="exampleTel">Телефон</Label>
         <Input
           id="exampleTel"
@@ -59,29 +50,17 @@ const OrderBuy: FC = () => {
         />
       </FormGroup>
       <FormGroup>
-        <Label for="exampleAddress">Адрес</Label>
-        <Input id="exampleAddress" name="address" placeholder="1234 Main St" />
+        <Label for="exampleAddress">Адрес СДЭК</Label>
+        <Input
+          id="exampleAddress"
+          name="address"
+          placeholder="ул. Гастело, д.24, к.8"
+        />
       </FormGroup>
-      <Row>
-        <Col md={6}>
-          <FormGroup>
-            <Label for="exampleCity">Город</Label>
-            <Input id="exampleCity" name="city" />
-          </FormGroup>
-        </Col>
-        <Col md={4}>
-          <FormGroup>
-            <Label for="exampleState">Улица</Label>
-            <Input id="exampleState" name="state" />
-          </FormGroup>
-        </Col>
-        <Col md={2}>
-          <FormGroup>
-            <Label for="exampleZip">Индекс</Label>
-            <Input id="exampleZip" name="zip" />
-          </FormGroup>
-        </Col>
-      </Row>
+      <FormGroup>
+        <Label for="exampleCity">Город</Label>
+        <Input id="exampleCity" name="city" placeholder="Самара" />
+      </FormGroup>
       <p className="text-center">
         Отправляя форму Вы подтверждаете политику конфиденциальности
       </p>

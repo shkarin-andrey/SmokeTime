@@ -1,3 +1,9 @@
 .faq {
   padding-top: 120px;
 }
+
+@media (max-width: 767px) {
+  .faq {
+    padding-top: 80px;
+  }
+}
