@@ -3,7 +3,7 @@ import MainLayout from "../layout";
 const Policy = () => {
   return (
     <MainLayout>
-      <h1 className="big-title">Policy</h1>
+      <h1 className="big-title">Ролитика конфиденциальности</h1>
     </MainLayout>
   );
 };

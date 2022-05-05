@@ -8,6 +8,10 @@ export const routes = [
     name: "Товары",
   },
   {
+    path: "/brands",
+    name: "Бренды",
+  },
+  {
     path: "/delivery",
     name: "Доставка и оплата",
   },

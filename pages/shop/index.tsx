@@ -9,7 +9,7 @@ const Shop: NextPage<iData> = ({ shop, pages }) => {
   return (
     <MainLayout>
       <Container>
-        <h1 className="big-title">Наш ассортимент жидкостей для вейпа</h1>
+        <h1 className="big-title">Ассортимент жидкостей для вейпа</h1>
         <Row>
           <Col md={3}>
             <Filter />
