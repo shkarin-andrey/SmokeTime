@@ -47,7 +47,7 @@ const ShopCard: FC<iShopCard> = ({ name, price, image, id }) => {
   const addItemsCard = () => {
     const getCart = JSON.parse(localStorage.getItem("cart") || "");
 
-    if (getCart) {
+    if (getCart.length > 0) {
       localStorage.setItem("cart", JSON.stringify([...getCart, stateCart]));
       filterItemsCard(JSON.parse(localStorage.getItem("cart") || ""));
     } else {
