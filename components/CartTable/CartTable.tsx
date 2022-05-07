@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { FC } from "react";
 import { Button, Table } from "reactstrap";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 interface iCartTable {
   cart: string[];
@@ -29,25 +30,27 @@ const CartTable: FC<iCartTable> = ({
               <th></th>
             </tr>
           </thead>
-          <tbody>
+          <TransitionGroup className="cart-list" component={"tbody"}>
             {cart.map((item: any, i: number) => (
-              <tr key={item.id} id={item.id}>
-                <th>{i + 1}</th>
-                <td>{item.name}</td>
-                <td>{new Intl.NumberFormat("ru-RU").format(item.count)}</td>
-                <td>{item.price}</td>
-                <td>{new Intl.NumberFormat("ru-RU").format(item.sum)}</td>
-                <td
-                  onClick={() => {
-                    deleteItemCart(item.id);
-                    updateItemCart(item.count, item.sum);
-                  }}
-                >
-                  &#10008;
-                </td>
-              </tr>
+              <CSSTransition key={item.id} timeout={500} classNames="cart-item">
+                <tr>
+                  <th>{i + 1}</th>
+                  <td>{item.name}</td>
+                  <td>{new Intl.NumberFormat("ru-RU").format(item.count)}</td>
+                  <td>{item.price}</td>
+                  <td>{new Intl.NumberFormat("ru-RU").format(item.sum)}</td>
+                  <td
+                    onClick={() => {
+                      deleteItemCart(item.id);
+                      updateItemCart(item.count, item.sum);
+                    }}
+                  >
+                    &#10008;
+                  </td>
+                </tr>
+              </CSSTransition>
             ))}
-          </tbody>
+          </TransitionGroup>
         </Table>
       ) : (
         <div className="mb-5 mt-5">

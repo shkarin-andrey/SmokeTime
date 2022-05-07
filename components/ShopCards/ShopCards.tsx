@@ -1,22 +1,19 @@
 import { FC } from "react";
-import { Row } from "reactstrap";
 import ShopCard from "../ShopCard/ShopCard";
 import { iData, iDataItem } from "../../type/shopData";
 import PaginationList from "../Pagination/Pagination";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 const ShopCards: FC<iData> = ({ shop, pages }) => {
   return (
     <section className="shop">
-      <Row>
+      <TransitionGroup className="row">
         {shop.map((item: iDataItem) => (
-          <ShopCard
-            key={item.id}
-            name={item.name}
-            price={item.price}
-            id={item.id}
-          />
+          <CSSTransition key={item.id} timeout={500} classNames="shop-item">
+            <ShopCard name={item.name} price={item.price} id={item.id} />
+          </CSSTransition>
         ))}
-      </Row>
+      </TransitionGroup>
       {pages > 1 ? <PaginationList pages={pages} /> : null}
     </section>
   );

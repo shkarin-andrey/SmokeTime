@@ -3,7 +3,6 @@ import { FC } from "react";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import seoPreviw from "../public/img/smoketime-seo.jpg";
-
 interface iMainLayout {
   children: JSX.Element[] | JSX.Element;
   title?: string;

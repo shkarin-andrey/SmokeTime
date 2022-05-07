@@ -19,3 +19,22 @@
 @import "modules/modal";
 
 @import "modules/footer";
+
+.main {
+  &-enter {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  &-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 300ms, transform 300ms;
+  }
+  &-exit {
+    opacity: 1;
+  }
+  &-exit-active {
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms;
+  }
+}
