@@ -6,28 +6,20 @@ const AboutCompany = () => {
   return (
     <section className="about_company">
       <Container>
-        <Row className="mt-5">
+        <Row className="mt-5 align-items-center">
           <Col md={6}>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-              odio blandit scelerisque enim sed pulvinar proin mi nibh. Arcu
-              diam molestie integer felis aliquam tempor, nullam. Non sed urna
-              porttitor sodales in sit odio sagittis facilisi. Adipiscing eros
-              platea parturient eu odio pellentesque in. Malesuada magna sed
-              nunc turpis faucibus pretium sit est. Nibh sit sit et felis leo,
-              at amet, mauris felis.
+              <span>Smoke time</span> – это крупная оптовая компания на рынке
+              вейпинга. Мы являемся дистрибьюторами самых популярных брендов.
+              Работаем с вейпШОПами по всей России и СНГ. Мы используем многие
+              сервисы для максимально комфортных условий заказа нашим клиентам.
             </p>
             <p>
-              Viverra nisi, ante ultricies tempor. Maecenas odio ultrices id
-              vitae amet tortor diam. Tincidunt augue mauris magna tincidunt
-              eget sed diam enim. Turpis convallis pretium lectus mi. Viverra
-              ullamcorper risus quis adipiscing enim pretium amet. Sodales
-              adipiscing nunc vel sit arcu volutpat. Odio sagittis arcu magna id
-              viverra. Lacinia integer at enim in dolor elit vulputate velit
-              sed. At risus id consequat sem diam, nec nunc elit amet. Lobortis
-              aliquet nunc vestibulum platea ut amet ut laoreet. Dis pretium
-              tellus orci phasellus vel amet adipiscing senectus ut. Nisl,
-              aliquam mi eu morbi lacinia a, pharetra pulvinar.
+              В ассортименте более 500 различных наименований. Ежедневно
+              пополняем склад, поддерживая наличие всех жидкостей. Заказы
+              отгружаем сервисом СДЭК по сниженным тарифам. Вся продукция
+              оригинал, т.к напрямую закупается с заводов. IT-21 века позволяют
+              сделать заказ всего в несколько нажатий.
             </p>
           </Col>
           <Col md={6}>

@@ -4,6 +4,12 @@ import { filterSelect } from "../../components/Filter/filterSelect";
 import Modal from "../../components/Modal/Modal";
 import { routes } from "../../routes";
 
+import dynamic from "next/dynamic";
+const VidgetCart = dynamic(
+  () => import("../../components/VidgetCart/VidgetCart"),
+  { ssr: false }
+);
+
 const Footer = () => {
   return (
     <footer className="footer">
@@ -79,6 +85,7 @@ const Footer = () => {
         </Row>
       </Container>
       <Modal />
+      <VidgetCart />
     </footer>
   );
 };

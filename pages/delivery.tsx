@@ -9,13 +9,13 @@ const Delivery = () => {
         <Row>
           <Col md={8} className="offset-md-2">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Explicabo, autem eligendi voluptas minima error esse. Sed rem,
-              sequi deserunt, dolores impedit quis sit fugiat quia ducimus
-              quaerat omnis mollitia eum laudantium accusamus voluptas
-              cupiditate necessitatibus natus quisquam accusantium eaque
-              adipisci quod. Quas in itaque voluptates aut optio neque assumenda
-              aliquam.
+              Работаем с вейпШОПами по всей России и СНГ. Мы используем многие
+              сервисы для максимально комфортных условий заказа нашим клиентам.
+              В ассортименте более 500 различных наименований. Ежедневно
+              пополняем склад, поддерживая наличие всех жидкостей. Заказы
+              отгружаем сервисом СДЭК по сниженным тарифам. Вся продукция
+              оригинал, т.к напрямую закупается с заводов. IT-21 века позволяют
+              сделать заказ всего в несколько нажатий.
             </p>
           </Col>
         </Row>

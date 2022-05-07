@@ -2,6 +2,7 @@ import { Button, Container } from "reactstrap";
 import img from "../../public/img/no-img.png";
 import { useRouter } from "next/router";
 import { FC } from "react";
+import React from "react";
 
 interface iBrandsCards {
   context: iBrand[];
@@ -22,10 +23,9 @@ const BrandsCards: FC<iBrandsCards> = ({ context, btn }) => {
         {btn && <h2 className="title">Бренды</h2>}
         <div className={`brands__grid mt-5 ${!btn ? "mb-5" : ""}`}>
           {context.map((item, i) => (
-            <>
+            <React.Fragment key={item.brand}>
               {btn && i < 5 && (
                 <div
-                  key={item.brand}
                   className="brands__grid__item"
                   onClick={() => router.push(item.link)}
                 >
@@ -49,7 +49,7 @@ const BrandsCards: FC<iBrandsCards> = ({ context, btn }) => {
                   </h3>
                 </div>
               )}
-            </>
+            </React.Fragment>
           ))}
         </div>
         {btn ? (

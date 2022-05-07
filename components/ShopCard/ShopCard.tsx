@@ -1,10 +1,8 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import { Button, Col, Input } from "reactstrap";
 import noImg from "../../public/img/no-img.png";
-import { useDispatch, useSelector } from "react-redux";
-import { addCart, countCart, sumCart } from "../../store/actions/cart";
 
 interface iShopCard {
   name: string;
@@ -16,8 +14,6 @@ interface iShopCard {
 const ShopCard: FC<iShopCard> = ({ name, price, image, id }) => {
   const [count, setCount] = useState<number>(1);
   const router = useRouter();
-  const dispatch = useDispatch();
-  const state = useSelector((state: any) => state.shopCart);
 
   const down = () => {
     if (+count > 1) {
@@ -29,8 +25,50 @@ const ShopCard: FC<iShopCard> = ({ name, price, image, id }) => {
     id,
     name,
     price,
-    sum: +count * price,
+    sum: count * price,
     count,
+  };
+
+  const filterItemsCard = (getCart: any) => {
+    const filterCard = getCart.reduce((m: any, o: any) => {
+      const found = m.find((p: any) => p.id === o.id);
+      if (found) {
+        found.count += o.count;
+        found.sum += o.sum;
+      } else {
+        m.push(o);
+      }
+      return m;
+    }, []);
+
+    localStorage.setItem("cart", JSON.stringify(filterCard));
+  };
+
+  const addItemsCard = () => {
+    const getCart = JSON.parse(localStorage.getItem("cart") || "");
+
+    if (getCart) {
+      localStorage.setItem("cart", JSON.stringify([...getCart, stateCart]));
+      filterItemsCard(JSON.parse(localStorage.getItem("cart") || ""));
+    } else {
+      localStorage.setItem("cart", JSON.stringify([stateCart]));
+    }
+  };
+
+  const updateCount = () => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "");
+    const updateCartCount = cart.reduce((p: number, n: any) => {
+      return p + n.count;
+    }, 0);
+    localStorage.setItem("count", JSON.stringify(updateCartCount));
+  };
+
+  const updateSum = () => {
+    const cart = JSON.parse(localStorage.getItem("cart") || "");
+    const updateCartSum = cart.reduce((p: number, n: any) => {
+      return p + n.sum;
+    }, 0);
+    localStorage.setItem("sum", JSON.stringify(updateCartSum));
   };
 
   return (
@@ -57,10 +95,10 @@ const ShopCard: FC<iShopCard> = ({ name, price, image, id }) => {
               </div>
             </div>
             <Button
-              onClick={() => {
-                dispatch(addCart(stateCart));
-                dispatch(countCart(state.count + count));
-                dispatch(sumCart(state.sum + count * price));
+              onClick={async () => {
+                await addItemsCard();
+                updateCount();
+                updateSum();
               }}
             >
               Заказать

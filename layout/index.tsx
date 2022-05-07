@@ -3,7 +3,6 @@ import { FC } from "react";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import seoPreviw from "../public/img/smoketime-seo.jpg";
-import VidgetCart from "../components/VidgetCart/VidgetCart";
 
 interface iMainLayout {
   children: JSX.Element[] | JSX.Element;
@@ -44,7 +43,6 @@ const MainLayout: FC<iMainLayout> = ({
       </Head>
       <Header />
       <main>{children}</main>
-      <VidgetCart />
       <Footer />
     </>
   );
