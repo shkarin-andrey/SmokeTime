@@ -68,7 +68,7 @@ const Footer = () => {
               </li>
               <li>
                 <address className="gray">
-                  <span>Адрес:</span> г. Самара, Финская улица, 96
+                  <span>Адрес:</span> г. Самара, ул.Гастелло 49
                 </address>
               </li>
             </ul>

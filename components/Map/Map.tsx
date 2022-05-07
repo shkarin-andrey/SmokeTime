@@ -1,9 +1,13 @@
 import Link from "next/link";
 import { FC } from "react";
 
-const Map: FC = () => {
+interface iMap {
+  className?: string;
+}
+
+const Map: FC<iMap> = ({ className }) => {
   return (
-    <div className="map">
+    <div className={`map ${className}`}>
       <div className="map__info">
         <div className="map__item">
           <div>
@@ -20,7 +24,7 @@ const Map: FC = () => {
           </Link>
         </div>
         <address className="map__item">
-          <span>Адрес:</span> г. Самара, Финская улица, 96
+          <span>Адрес:</span> г. Самара, ул.Гастелло 49
         </address>
       </div>
       <iframe

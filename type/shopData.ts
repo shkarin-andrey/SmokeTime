@@ -10,4 +10,5 @@ export interface iDataItem {
   strong: number | null | string;
   volume: number;
   price: number;
+  taste: string
 }

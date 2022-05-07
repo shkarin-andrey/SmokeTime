@@ -1,4 +1,5 @@
 import { Container, Row, Col, Form, Input, Button } from "reactstrap";
+import Map from "../components/Map/Map";
 import MainLayout from "../layout";
 
 const Contacts = () => {
@@ -18,7 +19,12 @@ const Contacts = () => {
               aliquam.
             </p>
           </Col>
-          <Col className="mt-3 mt-md-0" md={6}>
+          <Col md={6}>
+            <Map className="mt-0" />
+          </Col>
+        </Row>
+        <Row>
+          <Col className="mt-3 mt-5 offset-md-2" md={8}>
             <Form>
               <h2 className="title mb-2">Остались вопросы? Пишите:</h2>
               <Input className="mb-2" placeholder="Введите имя" required />
