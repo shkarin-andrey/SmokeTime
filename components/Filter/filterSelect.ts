@@ -75,5 +75,5 @@ export const filterSelect = {
       name: "60",
     },
   ],
-  volume: ["30"],
+  volume: ["all", "30"],
 };

@@ -29,6 +29,14 @@
 
       li {
         margin-bottom: 10px;
+        .footer__link {
+          cursor: pointer;
+          transition: all 0.3s;
+
+          &:hover {
+            color: $purple;
+          }
+        }
 
         .gray {
           color: $gray;

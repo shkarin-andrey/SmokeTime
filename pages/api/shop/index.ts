@@ -11,25 +11,18 @@ export default async function handler(
   const prev = (+page - 1) * +limit
   const next = (prev || 0) + +limit
 
-  let pages
-  let result
+  const filteredShop = await shop.shop.filter(item => {
+    const filterBrand = brand ? item.brand === brand : true
+    const filterStrong = strong ? item.strong === +strong : true
+    const filterSearch = search ? item.name.toLowerCase().search(search.toLowerCase()) !== -1 : true
 
-  if (brand && brand !== 'all') {
-    const filterBrand = shop.shop.filter(item => item.brand === brand)
-    pages = Math.ceil(filterBrand.length / +limit)
-    result = filterBrand.slice(prev, next);
-  } else if (strong && strong !== 'all') {
-    const filterStrong = shop.shop.filter(item => item.strong === +strong)
-    pages = Math.ceil(filterStrong.length / +limit)
-    result = filterStrong.slice(prev, next);
-  } else if (search && search !== '') {
-    const filterSearch = shop.shop.filter(item => item.name.toLowerCase().search(search.toLowerCase()) !== -1)
-    pages = Math.ceil(filterSearch.length / +limit)
-    result = filterSearch.slice(prev, next);
-  } else {
-    pages = Math.ceil(shop.shop.length / +limit)
-    result = shop.shop.slice(prev, next);
-  }
+    const filterVolume = volume ? item.volume === +volume : true
+
+    return filterBrand && filterStrong && filterSearch && filterVolume ? item : null
+  })
+
+  const result = await filteredShop.slice(prev, next)
+  const pages = await Math.ceil(filteredShop.length / +limit)
 
   res.status(200).json({ shop: result, pages });
 }

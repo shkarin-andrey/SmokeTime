@@ -1,37 +1,25 @@
 export const accordionList = [
   {
-    title: "Как происходит оплата заказа?",
-    descr: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Scelerisque potenti nunc mauris nibh. Mollis rhoncus auctor
-          scelerisque mus. Ornare eget mauris blandit placerat.
-          Tristique dolor morbi vitae proin.`,
+    title: "1)	Вся жидкость оригинал?",
+    descr: `- Да, мы нацелены на долгосрочное сотрудничество и с палью не работаем. `,
   },
   {
-    title: "Как происходит оплата заказа?",
-    descr: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Scelerisque potenti nunc mauris nibh. Mollis rhoncus auctor
-          scelerisque mus. Ornare eget mauris blandit placerat.
-          Tristique dolor morbi vitae proin.`,
+    title: "2) Имеются ли у вас какие сертификаты на продукцию?",
+    descr: `- Так как мы являемся дистрибьюторами (сотрудничество с заводом) всех жидкостей представленных в каталоге, у нас присутствуют все сертификаты.`,
   },
   {
-    title: "Как происходит оплата заказа?",
-    descr: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Scelerisque potenti nunc mauris nibh. Mollis rhoncus auctor
-          scelerisque mus. Ornare eget mauris blandit placerat.
-          Tristique dolor morbi vitae proin.`,
+    title: "3) Как долго осуществляется доставка?",
+    descr: `- Длительность и цена доставки зависит от города в который нужно доставить заказ, а так же условий доставки (склад-склад, дверь-склад и т.д).`,
   },
   {
-    title: "Как происходит оплата заказа?",
-    descr: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Scelerisque potenti nunc mauris nibh. Mollis rhoncus auctor
-          scelerisque mus. Ornare eget mauris blandit placerat.
-          Tristique dolor morbi vitae proin.`,
+    title: "4) Как осуществляется оплата?",
+    descr: `- Оплата осуществляется любым удобным для вас способом:
+      I) Перевод с карты на карту(Сбер, Тинькофф, СБП).
+      II) По Р/ С, +6 % к заказу.
+    `,
   },
   {
-    title: "Как происходит оплата заказа?",
-    descr: `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Scelerisque potenti nunc mauris nibh. Mollis rhoncus auctor
-          scelerisque mus. Ornare eget mauris blandit placerat.
-          Tristique dolor morbi vitae proin.`,
+    title: "5) Что делать если пришел брак?",
+    descr: `- Если в заказе попался брак, мы поменяем вам данную жидкость или же сделаем возврат средств.`,
   },
 ];

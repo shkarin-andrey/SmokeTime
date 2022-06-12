@@ -138,14 +138,14 @@ const ShopItem: NextPage<iDataItem> = ({
                 </div>
               </div>
               <p className="descr">
-                <span>Описание:</span> Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Pharetra suspendisse vitae congue cras rhoncus
-                turpis ullamcorper. Egestas vivamus ut et morbi. Arcu, in enim,
-                cras duis pellentesque eu in. Velit blandit platea cras pretium
-                lobortis. Tempor vestibulum ultrices purus integer enim in
-                turpis magna. Elementum congue quis odio eget. Convallis id
-                porttitor ipsum, nibh congue nisl, aenean. Faucibus aliquam
-                fermentum orci praesent non id imperdiet eget et.
+                <span>Описание:</span> Жидкость для электронных парогенераторов
+                «{name}». Это высококлассная линейка жидкостей на основе
+                качественных компонентов. Меры предосторожности: Не
+                рекомендуется тем, кто не курит и не употребляет никотин.
+                Использовать только с сертифицированными pod-системами. Хранить
+                в сухом и недоступном для детей месте. Избегать попадания прямых
+                солнечных лучей. Запрещается использование лицам не достигшим 18
+                лет.
               </p>
             </Col>
           </Row>

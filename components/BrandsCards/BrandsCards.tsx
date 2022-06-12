@@ -1,22 +1,21 @@
+/* eslint-disable @next/next/no-img-element */
 import { Button, Container } from "reactstrap";
 import img from "../../public/img/no-img.png";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import React from "react";
-
-interface iBrandsCards {
-  context: iBrand[];
-  btn?: boolean;
-}
-
-interface iBrand {
-  brand: string;
-  minPrice: string;
-  link: string;
-}
+import { iBrandsCards } from "./type";
+import { useDispatch } from "react-redux";
+import { brandFilter } from "../../store/actions/filter";
 
 const BrandsCards: FC<iBrandsCards> = ({ context, btn }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  const linkRouter = (link: string, brand: string) => {
+    dispatch(brandFilter(brand));
+    router.push(link);
+  };
   return (
     <section className={`brands ${!btn ? "pt-0" : ""}`}>
       <Container>
@@ -27,7 +26,7 @@ const BrandsCards: FC<iBrandsCards> = ({ context, btn }) => {
               {btn && i < 5 && (
                 <div
                   className="brands__grid__item"
-                  onClick={() => router.push(item.link)}
+                  onClick={() => linkRouter(item.link, item.brand)}
                 >
                   <img src={img.src} alt={item.brand} />
                   <h3 className="brands__grid__item-title">
@@ -40,7 +39,7 @@ const BrandsCards: FC<iBrandsCards> = ({ context, btn }) => {
                 <div
                   key={item.brand}
                   className="brands__grid__item"
-                  onClick={() => router.push(item.link)}
+                  onClick={() => linkRouter(item.link, item.brand)}
                 >
                   <img src={img.src} alt={item.brand} />
                   <h3 className="brands__grid__item-title">

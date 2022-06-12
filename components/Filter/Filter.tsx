@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState } from "react";
 import { FormGroup, Input, Label } from "reactstrap";
 import { filterSelect } from "./filterSelect";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,32 +18,49 @@ interface iFilter {
 const Filter: FC = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { brand, strong, volume } = useSelector(
+  const { brand, strong, volume, search } = useSelector(
     (state: iFilter) => state.shopFilter
   );
 
   const [value, setValue] = useState<string>("");
-  const [timer, setTimer] = useState<any>(null);
+  const [timer, setTimer] = useState<ReturnType<typeof setTimeout> | null>(
+    null
+  );
+
+  useEffect(() => {
+    const querySearch = search.length ? `search=${search}&` : "";
+    const queryBrand = brand !== "all" ? `brand=${brand}&` : "";
+    const queryStrong = strong !== "all" ? `strong=${strong}&` : "";
+    const queryVolume = volume !== "all" ? `volume=${volume}` : "";
+
+    router.push(
+      `/shop?${querySearch + queryBrand + queryStrong + queryVolume}&page=1`
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [brand, strong, volume, search]);
+
+  const inputSearch = (value: string) => {
+    setValue(value);
+    if (timer) {
+      clearInterval(timer);
+    }
+    setTimer(
+      setTimeout(() => {
+        dispatch(searchFilter(value));
+      }, 500)
+    );
+  };
 
   return (
     <div className="filter">
-      <h2 className="text-center mb-4">Фильтрация</h2>
+      <h2 className="text-center mb-4">Фильтр</h2>
       <Input
         placeholder="Поиск..."
         name="search"
         value={value}
-        onChange={(e: ChangeEvent<HTMLInputElement>) => {
-          setValue(e.target.value);
-          if (timer) {
-            clearInterval(timer);
-          }
-          setTimer(
-            setTimeout(() => {
-              dispatch(searchFilter(e.target.value));
-              router.push(`/shop?search=${e.target.value}&page=1`);
-            }, 500)
-          );
-        }}
+        onChange={(e: ChangeEvent<HTMLInputElement>) =>
+          inputSearch(e.target.value)
+        }
       />
       <FormGroup className="mt-3">
         <Label for="exampleSelect">Бренд</Label>
@@ -52,10 +69,9 @@ const Filter: FC = () => {
           name="brand"
           type="select"
           value={brand}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
-            dispatch(brandFilter(e.target.value));
-            router.push(`/shop?brand=${e.target.value}&page=1`);
-          }}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            dispatch(brandFilter(e.target.value))
+          }
         >
           {filterSelect.brands.map((item, i) => (
             <option key={i} value={item.value}>
@@ -71,10 +87,9 @@ const Filter: FC = () => {
           name="strong"
           type="select"
           value={strong}
-          onChange={(e: ChangeEvent<HTMLInputElement>) => {
-            dispatch(strongFilter(e.target.value));
-            router.push(`/shop?strong=${e.target.value}&page=1`);
-          }}
+          onChange={(e: ChangeEvent<HTMLInputElement>) =>
+            dispatch(strongFilter(e.target.value))
+          }
         >
           {filterSelect.strong.map((item, i) => (
             <option key={i} value={item.value}>
@@ -96,7 +111,7 @@ const Filter: FC = () => {
         >
           {filterSelect.volume.map((item, i) => (
             <option key={i} value={item}>
-              {item} мл.
+              {item === "all" ? "Все" : item + " мл."}
             </option>
           ))}
         </Input>
@@ -106,6 +121,7 @@ const Filter: FC = () => {
           border: 1px solid #a000d8;
           border-radius: 4px;
           padding: 20px;
+          margin-bottom: 30px;
         }
       `}</style>
     </div>

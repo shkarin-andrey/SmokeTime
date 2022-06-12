@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Button, Col, Container, Input, Row } from "reactstrap";
 import { openModalAction } from "../../store/actions/modal";
 import { CSSTransition } from "react-transition-group";
+import support from "../../public/img/support.jpg";
 
 const Modal: FC = () => {
   const dispatch = useDispatch();
@@ -53,9 +54,10 @@ const Modal: FC = () => {
                   <Button className="w-auto px-5">Запросить звонок</Button>
                 </Col>
                 <Col md={6} className="pe-md-0 px-0 px-md-2">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     className="w-100 h-100"
-                    src="https://ptzgovorit.ru/sites/default/files/styles/700x400/public/original_nodes/grqqw5apj_81.jpg?itok=gM3lRMIi"
+                    src={support.src}
                     alt="SmokeTime"
                   />
                 </Col>

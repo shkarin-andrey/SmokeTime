@@ -1,21 +1,29 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC } from "react";
+import { useSelector } from "react-redux";
+import { FilterState } from "../../type/filter";
 import ListPagination from "./ListPagination";
 interface iPaginationList {
   pages: number;
 }
 
-const PaginationList: FC<iPaginationList> = ({ pages }) => {
-  const router = useRouter();
-  const page: any = router.query.page;
-  const brand: any = router.query.brand;
-  const strong: any = router.query.strong;
-  const search: any = router.query.search;
+interface iFilter {
+  shopFilter: FilterState;
+}
 
-  const href = `/shop?${brand ? `brand=${brand}&` : ""}${
-    strong ? `strong=${strong}&` : ""
-  }${search ? `search=${search}&` : ""}`;
+const PaginationList: FC<iPaginationList> = ({ pages }) => {
+  const { brand, strong, volume, search } = useSelector(
+    (state: iFilter) => state.shopFilter
+  );
+  const router = useRouter();
+  const querySearch = search.length ? `search=${search}&` : "";
+  const queryBrand = brand !== "all" ? `brand=${brand}&` : "";
+  const queryStrong = strong !== "all" ? `strong=${strong}&` : "";
+  const queryVolume = volume !== "all" ? `volume=${volume}&` : "";
+  const page: any = router.query.page;
+
+  const href = `/shop?${querySearch + queryBrand + queryStrong + queryVolume}`;
 
   let list: number[] = [];
 

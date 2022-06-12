@@ -25,20 +25,23 @@ const Shop: NextPage<iData> = ({ shop, pages }) => {
 
 Shop.getInitialProps = async ({ query }) => {
   const { page, brand, strong, volume, search } = query;
-  const url = `${process.env.BASE_URL}/api/shop?limit=21${
-    brand ? "&brand=" + brand : ""
-  }${strong ? "&strong=" + strong : ""}${search ? "&search=" + search : ""}${
-    page ? "&page=" + page : ""
+
+  const querySearch = search ? `search=${search}&` : "";
+  const queryBrand = brand ? `brand=${brand}&` : "";
+  const queryStrong = strong ? `strong=${strong}&` : "";
+  const queryVolume = volume ? `volume=${volume}&` : "";
+  const queryPage = `page=${page}`;
+
+  const url = `${process.env.BASE_URL}/api/shop?limit=21&${
+    querySearch + queryBrand + queryStrong + queryVolume + queryPage
   }`;
 
-  if (brand || strong || volume || page) {
+  if (brand || strong || volume || page || brand) {
     const resp = await fetch(url);
     const shop = await resp.json();
     return { ...shop };
   } else {
-    const url = `${process.env.BASE_URL}/api/shop?&limit=21${
-      page ? "&page=" + page : ""
-    }`;
+    const url = `${process.env.BASE_URL}/api/shop?limit=21&${queryPage}`;
 
     const resp = await fetch(url);
     const shop = await resp.json();

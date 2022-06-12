@@ -8,11 +8,15 @@ const ShopCards: FC<iData> = ({ shop, pages }) => {
   return (
     <section className="shop">
       <TransitionGroup className="row">
-        {shop.map((item: iDataItem) => (
-          <CSSTransition key={item.id} timeout={500} classNames="shop-item">
-            <ShopCard name={item.name} price={item.price} id={item.id} />
-          </CSSTransition>
-        ))}
+        {shop.length ? (
+          shop.map((item: iDataItem) => (
+            <CSSTransition key={item.id} timeout={500} classNames="shop-item">
+              <ShopCard name={item.name} price={item.price} id={item.id} />
+            </CSSTransition>
+          ))
+        ) : (
+          <p className="text-center">По заданному фильтру товаров не найдено</p>
+        )}
       </TransitionGroup>
       {pages > 1 ? <PaginationList pages={pages} /> : null}
     </section>

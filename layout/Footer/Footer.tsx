@@ -5,12 +5,22 @@ import Modal from "../../components/Modal/Modal";
 import { routes } from "../../routes";
 
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
+import { brandFilter } from "../../store/actions/filter";
 const VidgetCart = dynamic(
   () => import("../../components/VidgetCart/VidgetCart"),
   { ssr: false }
 );
 
 const Footer = () => {
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const linkRouter = (brand: string) => {
+    dispatch(brandFilter(brand));
+    router.push(`/shop?brand=${brand}&page=1`);
+  };
   return (
     <footer className="footer">
       <Container>
@@ -43,9 +53,12 @@ const Footer = () => {
                 (item) =>
                   item.value !== "all" && (
                     <li key={item.name}>
-                      <Link href={`/shop?brand=${item.value}&page=1`}>
-                        <a>{item.name}</a>
-                      </Link>
+                      <div
+                        className="footer__link"
+                        onClick={() => linkRouter(item.value)}
+                      >
+                        {item.name}
+                      </div>
                     </li>
                   )
               )}
