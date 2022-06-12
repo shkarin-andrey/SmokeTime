@@ -2,6 +2,8 @@ import { useRouter } from "next/router";
 import { FC } from "react";
 import { Button, Table } from "reactstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
+import { useDispatch } from "react-redux";
+import { brandFilter } from "../../store/actions/filter";
 
 interface iCartTable {
   cart: string[];
@@ -15,6 +17,12 @@ const CartTable: FC<iCartTable> = ({
   deleteItemCart,
 }) => {
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  const linkRouter = (link: string, brand: string) => {
+    dispatch(brandFilter(brand));
+    router.push(link);
+  };
 
   return (
     <>
@@ -57,7 +65,7 @@ const CartTable: FC<iCartTable> = ({
           <p className="text-center">Пока в корзине ничего нет.</p>
           <Button
             className="d-block mx-auto"
-            onClick={() => router.push("/shop")}
+            onClick={() => linkRouter("/shop", "all")}
           >
             В магазин
           </Button>
