@@ -4,12 +4,7 @@ import { Button, Table } from "reactstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useDispatch } from "react-redux";
 import { brandFilter } from "../../store/actions/filter";
-
-interface iCartTable {
-  cart: string[];
-  updateItemCart: (count: number, sum: number) => void;
-  deleteItemCart: (id: string) => void;
-}
+import { iCartTable } from "./type";
 
 const CartTable: FC<iCartTable> = ({
   cart,
