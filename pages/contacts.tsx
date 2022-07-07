@@ -1,6 +1,7 @@
-import { Container, Row, Col, Form, Input, Button } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import Map from "../components/Map/Map";
 import MainLayout from "../layout";
+import QuestionsLeft from "../Screens/QuestionsLeft";
 
 const Contacts = () => {
   return (
@@ -23,28 +24,8 @@ const Contacts = () => {
             <Map className="mt-0" />
           </Col>
         </Row>
-        <Row>
-          <Col className="mt-3 mt-5 offset-md-2" md={8}>
-            <Form>
-              <h2 className="title mb-2">Остались вопросы? Пишите:</h2>
-              <Input className="mb-2" placeholder="Введите имя" required />
-              <Input
-                className="mb-2"
-                type="email"
-                placeholder="Введите Email адрес"
-                required
-              />
-              <Input
-                className="mb-2"
-                type="textarea"
-                placeholder="Введите сообщение"
-                required
-              />
-              <Button className="d-block mx-auto mt-3">Отправить</Button>
-            </Form>
-          </Col>
-        </Row>
       </Container>
+      <QuestionsLeft />
     </MainLayout>
   );
 };

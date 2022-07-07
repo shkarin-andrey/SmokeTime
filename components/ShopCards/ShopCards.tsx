@@ -11,7 +11,7 @@ const ShopCards: FC<iData> = ({ shop, pages }) => {
         {shop.length ? (
           shop.map((item: iDataItem) => (
             <CSSTransition key={item.id} timeout={500} classNames="shop-item">
-              <ShopCard name={item.name} price={item.price} id={item.id} />
+              <ShopCard name={item.name} price={item.price} id={item.id} title={item.meta.title} />
             </CSSTransition>
           ))
         ) : (

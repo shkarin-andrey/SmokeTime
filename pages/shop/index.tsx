@@ -4,6 +4,7 @@ import { NextPage } from "next";
 import { iData } from "../../type/shopData";
 import { Col, Container, Row } from "reactstrap";
 import Filter from "../../components/Filter/Filter";
+import QuestionsLeft from "../../Screens/QuestionsLeft";
 
 const Shop: NextPage<iData> = ({ shop, pages }) => {
   return (
@@ -19,6 +20,7 @@ const Shop: NextPage<iData> = ({ shop, pages }) => {
           </Col>
         </Row>
       </Container>
+      <QuestionsLeft />
     </MainLayout>
   );
 };

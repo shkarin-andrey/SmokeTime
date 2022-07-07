@@ -11,4 +11,9 @@ export interface iDataItem {
   volume: number;
   price: number;
   taste: string
+  meta: iMeta
+}
+
+interface iMeta {
+  title: string
 }

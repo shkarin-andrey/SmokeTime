@@ -5,6 +5,7 @@ import { Button, Col, Container, Input, Row } from "reactstrap";
 import Image from "next/image";
 import noImg from "../../public/img/no-img.png";
 import { useState } from "react";
+import QuestionsLeft from "../../Screens/QuestionsLeft";
 
 const ShopItem: NextPage<iDataItem> = ({
   id,
@@ -151,14 +152,15 @@ const ShopItem: NextPage<iDataItem> = ({
           </Row>
         </Container>
       </section>
+      <QuestionsLeft />
     </MainLayout>
   );
 };
 
 ShopItem.getInitialProps = async ({ query }) => {
-  const id = query.name;
+  const title = query.name;
 
-  const resp = await fetch(`${process.env.BASE_URL}/api/shop/${id}`);
+  const resp = await fetch(`${process.env.BASE_URL}/api/shop/${title}`);
   const dataItem = await resp.json();
 
   return { ...dataItem };

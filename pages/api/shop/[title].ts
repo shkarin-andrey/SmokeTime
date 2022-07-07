@@ -7,6 +7,6 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<iDataItem>
 ) {
-  const shopItem = shop.shop.filter((item) => item.id === req.query.id);
+  const shopItem = shop.shop.filter((item) => item.meta.title === req.query.title);
   res.status(200).json(shopItem[0]);
 }

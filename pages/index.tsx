@@ -6,6 +6,7 @@ import Map from "../components/Map/Map";
 import Why from "../components/Why/Why";
 import MainLayout from "../layout";
 import { context } from "../components/BrandsCards/context";
+import QuestionsLeft from "../Screens/QuestionsLeft";
 
 const Home: NextPage = () => {
   return (
@@ -16,6 +17,7 @@ const Home: NextPage = () => {
         <Brands context={context} btn />
         <FAQ />
         <Map />
+        <QuestionsLeft />
       </MainLayout>
     </>
   );

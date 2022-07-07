@@ -2,7 +2,7 @@ import { FC, useState } from "react";
 import { Col, Row } from "reactstrap";
 import CartSum from "../CartSum/CartSum";
 import CartTable from "../CartTable/CartTable";
-import OrderBuy from "../OrderBuy/OrderBuy";
+import OrderBuy from "../Forms/OrderBuy";
 
 const CartPage: FC = () => {
   const [cart, setCart] = useState(

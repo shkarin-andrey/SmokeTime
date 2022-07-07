@@ -10,10 +10,12 @@ import type { AppProps } from "next/app";
 import React, { FC } from "react";
 import { Provider } from "react-redux";
 import store from "../store";
+import AlertInfo from "../components/AlertInfo/AlertInfo";
 
 const WrappedApp: FC<AppProps> = ({ Component, pageProps }) => (
   <Provider store={store}>
     <Component {...pageProps} />
+    <AlertInfo />
   </Provider>
 );
 

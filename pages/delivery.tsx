@@ -1,5 +1,6 @@
 import { Col, Container, Row } from "reactstrap";
 import MainLayout from "../layout";
+import QuestionsLeft from "../Screens/QuestionsLeft";
 
 const Delivery = () => {
   return (
@@ -32,6 +33,7 @@ const Delivery = () => {
           </Col>
         </Row>
       </Container>
+      <QuestionsLeft />
     </MainLayout>
   );
 };
