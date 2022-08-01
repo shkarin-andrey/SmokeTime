@@ -2,13 +2,13 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import { Container, Row, Col, Button } from "reactstrap";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 import mainImg from "../../public/img/main-img.png";
-import { useDispatch } from "react-redux";
-import { openModalAction } from "../../store/actions/modal";
+import { openModalAction } from "../../store/reducers/modalSlice";
 
 const Intro: FC = () => {
   const router = useRouter();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   return (
     <section className="intro">
       <Container>

@@ -1,9 +1,9 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
-import { alertInfoMessage, alertInfoShow, alertInfoColor } from './../store/actions/alertInfo';
+import { alertInfoMessage, alertInfoColor, alertInfoShow } from '../store/reducers/alertInfo';
+import { useAppDispatch } from './useAppDispatch';
 
 const useAlert = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const showAlert = (message: string, color: 'success' | 'danger') => {
     dispatch(alertInfoMessage(message))

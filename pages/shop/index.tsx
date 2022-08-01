@@ -5,8 +5,18 @@ import { iData } from "../../type/shopData";
 import { Col, Container, Row } from "reactstrap";
 import Filter from "../../components/Filter/Filter";
 import QuestionsLeft from "../../Screens/QuestionsLeft";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { shopActions, pagesActions } from "../../store/reducers/shopSlice";
+import { useEffect } from "react";
 
 const Shop: NextPage<iData> = ({ shop, pages }) => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(shopActions(shop));
+    dispatch(pagesActions(pages));
+  }, [shop, pages]);
+
   return (
     <MainLayout>
       <Container>
@@ -16,7 +26,7 @@ const Shop: NextPage<iData> = ({ shop, pages }) => {
             <Filter />
           </Col>
           <Col md={9}>
-            <ShopCards shop={shop} pages={pages} />
+            <ShopCards />
           </Col>
         </Row>
       </Container>

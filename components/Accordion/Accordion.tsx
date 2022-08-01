@@ -1,14 +1,6 @@
 import { FC, useState } from "react";
+import { iAccordion } from "./Accordion.interface";
 import AccordionItem from "./AccordionItem";
-
-interface iAccordion {
-  accordionList: iAccordionItem[];
-}
-
-interface iAccordionItem {
-  title: string;
-  descr: string;
-}
 
 const Accordion: FC<iAccordion> = ({ accordionList }) => {
   return (

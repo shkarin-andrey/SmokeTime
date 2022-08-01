@@ -1,6 +1,13 @@
 import Link from "next/link";
+import { FC } from "react";
 
-const ListPagination = ({ page, pages, href }: any) => {
+interface iListPagination {
+  page: string;
+  pages: string;
+  href: string;
+}
+
+const ListPagination: FC<iListPagination> = ({ page, pages, href }) => {
   return (
     <>
       {page === undefined || +page < 4 ? (

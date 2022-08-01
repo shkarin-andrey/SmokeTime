@@ -2,9 +2,9 @@ import { useRouter } from "next/router";
 import { FC } from "react";
 import { Button, Table } from "reactstrap";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { useDispatch } from "react-redux";
-import { brandFilter } from "../../store/actions/filter";
-import { iCartTable } from "./type";
+import { iCartTable } from "./CartTable.interface";
+import { brandFilter } from "../../store/reducers/filterSlice";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 
 const CartTable: FC<iCartTable> = ({
   cart,
@@ -12,7 +12,7 @@ const CartTable: FC<iCartTable> = ({
   deleteItemCart,
 }) => {
   const router = useRouter();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const linkRouter = (link: string, brand: string) => {
     dispatch(brandFilter(brand));

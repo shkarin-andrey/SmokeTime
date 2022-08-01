@@ -15,7 +15,7 @@ const OrderBuy: FC = () => {
     resetForm: () => void
   ) => {
     try {
-      await axios.post("http://localhost:3000/api/sendgrid", {
+      await axios.post(`${process.env.BASE_URL}/api/sendgrid`, {
         body: JSON.stringify(values),
       });
       showAlert("Заказ успешно оформлен", "success");

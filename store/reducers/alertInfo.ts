@@ -1,33 +1,36 @@
-import { createReducer } from "@reduxjs/toolkit"
-import { alertInfoColor, alertInfoHide, alertInfoMessage, alertInfoShow } from './../actions/alertInfo';
+import { createSlice } from '@reduxjs/toolkit'
+import type { PayloadAction } from '@reduxjs/toolkit'
 
-interface alertInfoState {
+export interface AlertInfoState {
   color: 'success' | 'danger'
   message: string
   isOpen: boolean
 }
 
-const initialState: alertInfoState = {
+const initialState: AlertInfoState = {
   color: 'success',
   message: '',
   isOpen: false
 }
 
-const alertInfo = createReducer(initialState, builder => {
-  builder
-    .addCase(alertInfoMessage, (state, action) => {
+export const alertInfoSlice = createSlice({
+  name: 'alertInfo',
+  initialState,
+  reducers: {
+    alertInfoMessage: (state: AlertInfoState, action: PayloadAction<string>) => {
       state.message = action.payload
-    })
-    .addCase(alertInfoColor, (state, action) => {
+    },
+    alertInfoColor: (state: AlertInfoState, action: PayloadAction<"success" | "danger">) => {
       state.color = action.payload
-    })
-    .addCase(alertInfoShow, (state) => {
+    },
+    alertInfoShow: (state: AlertInfoState) => {
       state.isOpen = true
-    })
-    .addCase(alertInfoHide, (state) => {
+    },
+    alertInfoHide: (state: AlertInfoState) => {
       state.isOpen = false
-    })
-    .addDefaultCase(() => { })
+    },
+  },
 })
 
-export default alertInfo
+export const { alertInfoMessage, alertInfoColor, alertInfoShow, alertInfoHide } = alertInfoSlice.actions
+export default alertInfoSlice.reducer

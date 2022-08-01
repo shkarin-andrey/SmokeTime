@@ -1,17 +1,19 @@
 import { FC } from "react";
+import { iCartSum } from "./CartSum.interface";
 
-const CartSum: FC = () => {
-  const count = JSON.parse(localStorage.getItem("count") || "");
-  const sum = JSON.parse(localStorage.getItem("sum") || "");
+const CartSum: FC<iCartSum> = ({ count, sum }) => {
+  const formatNumber = (number: number) => {
+    return new Intl.NumberFormat("ru-RU").format(number);
+  };
+
   return (
     <>
       <h2 className="title text-md-start text-center">Итого:</h2>
       <div className="cart__count">
-        Количество: <span>{new Intl.NumberFormat("ru-RU").format(count)}</span>{" "}
-        шт.
+        Количество: <span>{formatNumber(count)}</span> шт.
       </div>
       <div className="cart__sum">
-        Сумма: <span>{new Intl.NumberFormat("ru-RU").format(sum)}</span> руб.
+        Сумма: <span>{formatNumber(sum)}</span> руб.
       </div>
     </>
   );

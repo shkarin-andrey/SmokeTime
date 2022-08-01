@@ -4,13 +4,13 @@ import img from "../../public/img/no-img.png";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import React from "react";
-import { iBrandsCards } from "./type";
-import { useDispatch } from "react-redux";
-import { brandFilter } from "../../store/actions/filter";
+import { iBrandsCards } from "./BrandsCards.interface";
+import { brandFilter } from "../../store/reducers/filterSlice";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 
 const BrandsCards: FC<iBrandsCards> = ({ context, btn }) => {
   const router = useRouter();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const linkRouter = (link: string, brand: string) => {
     dispatch(brandFilter(brand));
