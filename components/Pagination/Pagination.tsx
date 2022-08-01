@@ -1,20 +1,13 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC } from "react";
-import { useSelector } from "react-redux";
-import { FilterState } from "../../type/filter";
+import { useAppSelector } from "../../hooks/useAppSelector";
 import ListPagination from "./ListPagination";
-interface iPaginationList {
-  pages: number;
-}
-
-interface iFilter {
-  shopFilter: FilterState;
-}
+import { iPaginationList } from "./Pagination.interface";
 
 const PaginationList: FC<iPaginationList> = ({ pages }) => {
-  const { brand, strong, volume, search } = useSelector(
-    (state: iFilter) => state.shopFilter
+  const { brand, strong, volume, search } = useAppSelector(
+    (state) => state.shopFilter
   );
   const router = useRouter();
   const querySearch = search.length ? `search=${search}&` : "";
@@ -61,7 +54,9 @@ const PaginationList: FC<iPaginationList> = ({ pages }) => {
           </Link>
         ))}
 
-      {pages > 7 && <ListPagination page={page} pages={pages} href={href} />}
+      {pages > 7 && (
+        <ListPagination page={page} pages={pages.toString()} href={href} />
+      )}
 
       <Link href={`${href}page=${pages}`}>
         <a className={`item ${+page === +pages ? "active" : ""}`}>{pages}</a>

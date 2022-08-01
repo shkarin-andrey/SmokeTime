@@ -1,13 +1,14 @@
 import { FC } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import { Button, Col, Container, Input, Row } from "reactstrap";
-import { openModalAction } from "../../store/actions/modal";
 import { CSSTransition } from "react-transition-group";
 import support from "../../public/img/support.jpg";
+import { openModalAction } from "../../store/reducers/modalSlice";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 
 const Modal: FC = () => {
-  const dispatch = useDispatch();
-  const { showModal } = useSelector((state: any) => state.openModalReducer);
+  const dispatch = useAppDispatch();
+  const { showModal } = useAppSelector((state) => state.openModal);
 
   return (
     <CSSTransition

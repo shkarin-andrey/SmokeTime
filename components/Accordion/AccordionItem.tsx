@@ -1,11 +1,7 @@
 import { FC, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import ArrowDown from "../../public/icons/arrowDown";
-
-interface iAccordionItem {
-  title: string;
-  descr: string;
-}
+import { iAccordionItem } from "./Accordion.interface";
 
 const AccordionItem: FC<iAccordionItem> = ({ title, descr }) => {
   const [show, setShow] = useState(false);

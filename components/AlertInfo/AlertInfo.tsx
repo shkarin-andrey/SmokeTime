@@ -1,13 +1,12 @@
 import React from "react";
 import { Alert } from "reactstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { alertInfoHide } from "../../store/actions/alertInfo";
+import { alertInfoHide } from "../../store/reducers/alertInfo";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 
 const AlertInfo = () => {
-  const dispatch = useDispatch();
-  const { color, message, isOpen } = useSelector(
-    (state: any) => state.alertInfo
-  );
+  const dispatch = useAppDispatch();
+  const { color, message, isOpen } = useAppSelector((state) => state.alertInfo);
 
   return (
     <Alert

@@ -1,25 +1,21 @@
 import { ChangeEvent, FC, useEffect, useState } from "react";
 import { FormGroup, Input, Label } from "reactstrap";
 import { filterSelect } from "./filterSelect";
-import { useDispatch, useSelector } from "react-redux";
 import {
   brandFilter,
   searchFilter,
   strongFilter,
   volumeFilter,
-} from "../../store/actions/filter";
-import { FilterState } from "../../type/filter";
+} from "../../store/reducers/filterSlice";
 import { useRouter } from "next/router";
-
-interface iFilter {
-  shopFilter: FilterState;
-}
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 
 const Filter: FC = () => {
   const router = useRouter();
-  const dispatch = useDispatch();
-  const { brand, strong, volume, search } = useSelector(
-    (state: iFilter) => state.shopFilter
+  const dispatch = useAppDispatch();
+  const { brand, strong, volume, search } = useAppSelector(
+    (state) => state.shopFilter
   );
 
   const [value, setValue] = useState<string>("");

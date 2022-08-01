@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { Button, Col, Container, Row } from "reactstrap";
 import Navigate from "../../components/Navigate/Navigate";
-import { useDispatch } from "react-redux";
-import { openModalAction } from "../../store/actions/modal";
-import { useSelector } from "react-redux";
+import { openModalAction } from "../../store/reducers/modalSlice";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { useAppSelector } from "../../hooks/useAppSelector";
 
 const Header = () => {
-  const dispatch = useDispatch();
-  const { showModal } = useSelector((state: any) => state.openModalReducer);
+  const dispatch = useAppDispatch();
+  const { showModal } = useAppSelector((state) => state.openModal);
   return (
     <header className="header">
       <Container>

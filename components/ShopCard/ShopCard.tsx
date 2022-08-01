@@ -1,26 +1,28 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { FC, useState } from "react";
+import { ChangeEvent, FC, useState } from "react";
 import { Button, Col, Input } from "reactstrap";
 import noImg from "../../public/img/no-img.png";
+import { iShopCard } from "./ShopCard.interface";
 
-interface iShopCard {
-  name: string;
-  price: number;
-  image?: string | undefined;
-  id: string;
-  title: string
-}
-
-const ShopCard: FC<iShopCard> = ({ name, price, image, id, title }) => {
+const ShopCard: FC<iShopCard> = ({
+  name,
+  price,
+  image,
+  id,
+  title,
+  addItemsCard,
+}) => {
   const [count, setCount] = useState<number>(1);
   const router = useRouter();
 
   const down = () => {
     if (+count > 1) {
-      setCount(+count - 1);
+      setCount((count) => count - 1);
     }
   };
+
+  const up = () => setCount((count) => count + 1);
 
   const stateCart = {
     id,
@@ -30,52 +32,17 @@ const ShopCard: FC<iShopCard> = ({ name, price, image, id, title }) => {
     count,
   };
 
-  const filterItemsCard = (getCart: any) => {
-    const filterCard = getCart.reduce((m: any, o: any) => {
-      const found = m.find((p: any) => p.id === o.id);
-      if (found) {
-        found.count += o.count;
-        found.sum += o.sum;
-      } else {
-        m.push(o);
-      }
-      return m;
-    }, []);
-
-    localStorage.setItem("cart", JSON.stringify(filterCard));
-  };
-
-  const addItemsCard = () => {
-    const getCart = JSON.parse(localStorage.getItem("cart") || "");
-
-    if (getCart.length > 0) {
-      localStorage.setItem("cart", JSON.stringify([...getCart, stateCart]));
-      filterItemsCard(JSON.parse(localStorage.getItem("cart") || ""));
-    } else {
-      localStorage.setItem("cart", JSON.stringify([stateCart]));
-    }
-  };
-
-  const updateCount = () => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "");
-    const updateCartCount = cart.reduce((p: number, n: any) => {
-      return p + n.count;
-    }, 0);
-    localStorage.setItem("count", JSON.stringify(updateCartCount));
-  };
-
-  const updateSum = () => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "");
-    const updateCartSum = cart.reduce((p: number, n: any) => {
-      return p + n.sum;
-    }, 0);
-    localStorage.setItem("sum", JSON.stringify(updateCartSum));
+  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setCount(Number(e.target.value));
   };
 
   return (
     <Col sm={6} xl={4}>
       <div className="card">
-        <div className="card__top" onClick={() => router.push("/shop/" + title)}>
+        <div
+          className="card__top"
+          onClick={() => router.push("/shop/" + title)}
+        >
           <Image src={image ? image : noImg} alt={name} />
           <h3>{name}</h3>
         </div>
@@ -89,21 +56,13 @@ const ShopCard: FC<iShopCard> = ({ name, price, image, id, title }) => {
                 type="number"
                 bsSize={"sm"}
                 value={count}
-                onChange={(e) => setCount(Number(e.target.value))}
+                onChange={changeHandler}
               />
-              <div className="up" onClick={() => setCount(+count + 1)}>
+              <div className="up" onClick={up}>
                 &#10010;
               </div>
             </div>
-            <Button
-              onClick={async () => {
-                await addItemsCard();
-                updateCount();
-                updateSum();
-              }}
-            >
-              Заказать
-            </Button>
+            <Button onClick={() => addItemsCard(stateCart)}>Заказать</Button>
           </div>
           <div className="card__bottom__price">
             <div className="card__bottom__price-prev">

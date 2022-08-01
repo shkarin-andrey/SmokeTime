@@ -1,11 +1,19 @@
 import Link from "next/link";
-import { FC } from "react";
-
-interface iMap {
-  className?: string;
-}
+import { createElement, FC, memo, useCallback } from "react";
+import { iMap } from "./Map.interface";
 
 const Map: FC<iMap> = ({ className }) => {
+  const getMap = useCallback(
+    () =>
+      createElement("iframe", {
+        src: "https://yandex.ru/map-widget/v1/?um=constructor%3Ad8a78c177a5d6c3ccffcdfef36d75acd11f1f9a74e5079289f5a734dc4d7820e&amp;source=constructor",
+        width: "100%",
+        height: "300",
+        frameBorder: "0",
+      }),
+    []
+  );
+
   return (
     <div className={`map ${className}`}>
       <div className="map__info">
@@ -27,14 +35,9 @@ const Map: FC<iMap> = ({ className }) => {
           <span>Адрес:</span> г. Самара, ул.Гастелло 49
         </address>
       </div>
-      <iframe
-        src="https://yandex.ru/map-widget/v1/?um=constructor%3Ad8a78c177a5d6c3ccffcdfef36d75acd11f1f9a74e5079289f5a734dc4d7820e&amp;source=constructor"
-        width="100%"
-        height="300"
-        frameBorder="0"
-      ></iframe>
+      {getMap()}
     </div>
   );
 };
 
-export default Map;
+export default memo(Map);

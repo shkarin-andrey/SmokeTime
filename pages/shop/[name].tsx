@@ -4,8 +4,11 @@ import { iDataItem } from "../../type/shopData";
 import { Button, Col, Container, Input, Row } from "reactstrap";
 import Image from "next/image";
 import noImg from "../../public/img/no-img.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import QuestionsLeft from "../../Screens/QuestionsLeft";
+import useLocalStorage from "./../../hooks/useLocalStorage";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { countActions } from "../../store/reducers/cartSlice";
 
 const ShopItem: NextPage<iDataItem> = ({
   id,
@@ -16,12 +19,23 @@ const ShopItem: NextPage<iDataItem> = ({
   taste,
 }) => {
   const [count, setCount] = useState<number>(1);
+  const [cart, setCart] = useLocalStorage("cart", []);
+  const [countLocal, setCountLocal] = useLocalStorage("count", 0);
+  const [sumLocal, setSumLocal] = useLocalStorage("sum", 0);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(countActions(countLocal));
+  }, [countLocal]);
 
   const down = () => {
     if (+count > 1) {
-      setCount(+count - 1);
+      setCount((count) => count - 1);
     }
   };
+
+  const up = () => setCount((count) => count + 1);
 
   const stateCart = {
     id,
@@ -43,34 +57,26 @@ const ShopItem: NextPage<iDataItem> = ({
       return m;
     }, []);
 
-    localStorage.setItem("cart", JSON.stringify(filterCard));
+    setCart(filterCard);
+    updateCount(filterCard);
+    updateSum(filterCard);
   };
 
-  const addItemsCard = () => {
-    const getCart = JSON.parse(localStorage.getItem("cart") || "");
+  const addItemsCard = () => filterItemsCard([...cart, stateCart]);
 
-    if (getCart.length > 0) {
-      localStorage.setItem("cart", JSON.stringify([...getCart, stateCart]));
-      filterItemsCard(JSON.parse(localStorage.getItem("cart") || ""));
-    } else {
-      localStorage.setItem("cart", JSON.stringify([stateCart]));
-    }
-  };
-
-  const updateCount = () => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "");
-    const updateCartCount = cart.reduce((p: number, n: any) => {
+  const updateCount = (getCart: any) => {
+    const updateCartCount = getCart.reduce((p: number, n: any) => {
       return p + n.count;
     }, 0);
-    localStorage.setItem("count", JSON.stringify(updateCartCount));
+
+    setCountLocal(updateCartCount);
   };
 
-  const updateSum = () => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "");
-    const updateCartSum = cart.reduce((p: number, n: any) => {
+  const updateSum = (getCart: any) => {
+    const updateCartSum = getCart.reduce((p: number, n: any) => {
       return p + n.sum;
     }, 0);
-    localStorage.setItem("sum", JSON.stringify(updateCartSum));
+    setSumLocal(updateCartSum);
   };
 
   return (
@@ -121,18 +127,11 @@ const ShopItem: NextPage<iDataItem> = ({
                         value={count}
                         onChange={(e) => setCount(Number(e.target.value))}
                       />
-                      <div className="up" onClick={() => setCount(+count + 1)}>
+                      <div className="up" onClick={up}>
                         &#10010;
                       </div>
                     </div>
-                    <Button
-                      className="mt-2"
-                      onClick={async () => {
-                        await addItemsCard();
-                        updateCount();
-                        updateSum();
-                      }}
-                    >
+                    <Button className="mt-2" onClick={addItemsCard}>
                       Добавить в карзину
                     </Button>
                   </div>

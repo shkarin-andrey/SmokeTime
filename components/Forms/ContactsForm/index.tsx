@@ -15,25 +15,20 @@ const ContactsForm: FC = () => {
     resetForm: () => void
   ) => {
     try {
-      await axios.post("http://localhost:3000/api/sendgrid", {
+      await axios.post(`${process.env.BASE_URL}/api/sendgrid`, {
         body: JSON.stringify(values),
       });
+      await setSubmitting(false);
+
       showAlert("Сообщение успешно отправлено", "success");
+      console.log(values);
+
+      resetForm();
     } catch (error) {
       console.log(error);
 
       showAlert("Что-то пошло не так", "danger");
     }
-    // await axios
-    //   .post("http://localhost:3000/api/sendgrid", {
-    //     body: JSON.stringify(values),
-    //   })
-    //   .then((data) => console.log(data))
-    //   .catch((error) => console.log(error));
-    console.log(values);
-    await setSubmitting(false);
-
-    resetForm();
   };
 
   return (
@@ -53,7 +48,7 @@ const ContactsForm: FC = () => {
         isSubmitting,
       }) => (
         <Form>
-          <h2 className="title mb-2">Остались вопросы? Пишите:</h2>
+          <h2 className="title mb-5">Остались вопросы? Пишите:</h2>
           <Input
             name="username"
             onChange={handleChange}

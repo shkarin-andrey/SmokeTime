@@ -3,28 +3,33 @@ import { Col, Row } from "reactstrap";
 import CartSum from "../CartSum/CartSum";
 import CartTable from "../CartTable/CartTable";
 import OrderBuy from "../Forms/OrderBuy";
+import useLocalStorage from "./../../hooks/useLocalStorage";
+import { useAppDispatch } from "./../../hooks/useAppDispatch";
+import { countActions } from "../../store/reducers/cartSlice";
 
 const CartPage: FC = () => {
-  const [cart, setCart] = useState(
-    JSON.parse(localStorage.getItem("cart") || "")
-  );
+  const [cart, setCart] = useLocalStorage("cart", []);
+  const [count, setCount] = useLocalStorage("count", 0);
+  const [sum, setSum] = useLocalStorage("sum", 0);
+
+  const dispatch = useAppDispatch();
 
   const deleteItemCart = (id: string) => {
     const filterCart = cart.filter((x: any) => x.id !== id);
-    localStorage.setItem("cart", JSON.stringify(filterCart));
-    setCart(JSON.parse(localStorage.getItem("cart") || ""));
+    setCart(filterCart);
   };
 
   const updateItemCart = (count: number, sum: number) => {
     const updateCartCount = cart.reduce((p: number, n: any) => {
       return p + n.count;
     }, -count);
-    localStorage.setItem("count", JSON.stringify(updateCartCount));
+    setCount(updateCartCount);
+    dispatch(countActions(updateCartCount));
 
     const updateCartSum = cart.reduce((p: number, n: any) => {
       return p + n.sum;
     }, -sum);
-    localStorage.setItem("sum", JSON.stringify(updateCartSum));
+    setSum(updateCartSum);
   };
 
   return (
@@ -38,7 +43,7 @@ const CartPage: FC = () => {
           />
         </Col>
       </Row>
-      {cart.length > 0 ? (
+      {cart.length > 0 && (
         <Row className="mt-5 mb-5">
           <Col md={7} lg={6} className="order-2 order-md-1">
             <OrderBuy />
@@ -47,11 +52,9 @@ const CartPage: FC = () => {
             md={3}
             className="offset-lg-3 offset-md-2 text-center text-md-start order-1 order-md-2 mb-5 mb-md-0"
           >
-            <CartSum />
+            <CartSum count={count} sum={sum} />
           </Col>
         </Row>
-      ) : (
-        ""
       )}
     </>
   );
