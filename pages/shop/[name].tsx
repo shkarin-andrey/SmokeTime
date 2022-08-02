@@ -9,6 +9,7 @@ import QuestionsLeft from "../../Screens/QuestionsLeft";
 import useLocalStorage from "./../../hooks/useLocalStorage";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import { countActions } from "../../store/reducers/cartSlice";
+import { iCart } from "../../type/cart";
 
 const ShopItem: NextPage<iDataItem> = ({
   id,
@@ -45,9 +46,9 @@ const ShopItem: NextPage<iDataItem> = ({
     count,
   };
 
-  const filterItemsCard = (getCart: any) => {
-    const filterCard = getCart.reduce((m: any, o: any) => {
-      const found = m.find((p: any) => p.id === o.id);
+  const filterItemsCard = (getCart: iCart[]) => {
+    const filterCard = getCart.reduce((m: iCart[], o: iCart) => {
+      const found = m.find((p: iCart) => p.id === o.id);
       if (found) {
         found.count += o.count;
         found.sum += o.sum;
@@ -64,16 +65,16 @@ const ShopItem: NextPage<iDataItem> = ({
 
   const addItemsCard = () => filterItemsCard([...cart, stateCart]);
 
-  const updateCount = (getCart: any) => {
-    const updateCartCount = getCart.reduce((p: number, n: any) => {
+  const updateCount = (getCart: iCart[]) => {
+    const updateCartCount = getCart.reduce((p: number, n: iCart) => {
       return p + n.count;
     }, 0);
 
     setCountLocal(updateCartCount);
   };
 
-  const updateSum = (getCart: any) => {
-    const updateCartSum = getCart.reduce((p: number, n: any) => {
+  const updateSum = (getCart: iCart[]) => {
+    const updateCartSum = getCart.reduce((p: number, n: iCart) => {
       return p + n.sum;
     }, 0);
     setSumLocal(updateCartSum);

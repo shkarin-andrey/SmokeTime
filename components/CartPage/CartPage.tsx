@@ -6,6 +6,7 @@ import OrderBuy from "../Forms/OrderBuy";
 import useLocalStorage from "./../../hooks/useLocalStorage";
 import { useAppDispatch } from "./../../hooks/useAppDispatch";
 import { countActions } from "../../store/reducers/cartSlice";
+import { iCart } from "../../type/cart";
 
 const CartPage: FC = () => {
   const [cart, setCart] = useLocalStorage("cart", []);
@@ -15,18 +16,18 @@ const CartPage: FC = () => {
   const dispatch = useAppDispatch();
 
   const deleteItemCart = (id: string) => {
-    const filterCart = cart.filter((x: any) => x.id !== id);
+    const filterCart = cart.filter((x: iCart) => x.id !== id);
     setCart(filterCart);
   };
 
   const updateItemCart = (count: number, sum: number) => {
-    const updateCartCount = cart.reduce((p: number, n: any) => {
+    const updateCartCount = cart.reduce((p: number, n: iCart) => {
       return p + n.count;
     }, -count);
     setCount(updateCartCount);
     dispatch(countActions(updateCartCount));
 
-    const updateCartSum = cart.reduce((p: number, n: any) => {
+    const updateCartSum = cart.reduce((p: number, n: iCart) => {
       return p + n.sum;
     }, -sum);
     setSum(updateCartSum);

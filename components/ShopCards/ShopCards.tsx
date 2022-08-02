@@ -7,6 +7,7 @@ import { useAppSelector } from "./../../hooks/useAppSelector";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { useAppDispatch } from "./../../hooks/useAppDispatch";
 import { countActions } from "../../store/reducers/cartSlice";
+import { iCart } from "../../type/cart";
 
 const ShopCards: FC = () => {
   const { shop, pages } = useAppSelector((state) => state.shop);
@@ -20,9 +21,9 @@ const ShopCards: FC = () => {
     dispatch(countActions(countLocal));
   }, [countLocal]);
 
-  const filterItemsCard = (getCart: any) => {
-    const filterCard = getCart.reduce((m: any, o: any) => {
-      const found = m.find((p: any) => p.id === o.id);
+  const filterItemsCard = (getCart: iCart[]) => {
+    const filterCard = getCart.reduce((m: iCart[], o: iCart) => {
+      const found = m.find((p: iCart) => p.id === o.id);
 
       if (found) {
         found.count += o.count;
@@ -38,25 +39,23 @@ const ShopCards: FC = () => {
     updateSum(filterCard);
   };
 
-  const updateCount = (getCart: any) => {
-    const updateCartCount = getCart.reduce((p: number, n: any) => {
+  const updateCount = (getCart: iCart[]) => {
+    const updateCartCount = getCart.reduce((p: number, n: iCart) => {
       return p + n.count;
     }, 0);
 
     setCountLocal(updateCartCount);
   };
 
-  const updateSum = (getCart: any) => {
-    const updateCartSum = getCart.reduce((p: number, n: any) => {
-      console.log(n);
-
+  const updateSum = (getCart: iCart[]) => {
+    const updateCartSum = getCart.reduce((p: number, n: iCart) => {
       return p + n.sum;
     }, 0);
 
     setSumLocal(updateCartSum);
   };
 
-  const addItemsCard = (stateCart: any) => {
+  const addItemsCard = (stateCart: iCart) => {
     filterItemsCard([...cart, stateCart]);
   };
 

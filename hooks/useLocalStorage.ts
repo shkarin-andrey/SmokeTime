@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { iCart } from "../type/cart";
 
-const useLocalStorage = (key: any, initialValue: any) => {
+const useLocalStorage = (key: string, initialValue: iCart[] | number) => {
   const [storedValue, setStoredValue] = useState(() => {
     try {
       const item = window.localStorage.getItem(key);
@@ -11,6 +12,8 @@ const useLocalStorage = (key: any, initialValue: any) => {
     }
   });
   const setValue = (value: any) => {
+    console.log("value", value);
+
     try {
       const valueToStore =
         value instanceof Function ? value(storedValue) : value;
@@ -23,6 +26,6 @@ const useLocalStorage = (key: any, initialValue: any) => {
     }
   };
   return [storedValue, setValue];
-}
+};
 
-export default useLocalStorage
+export default useLocalStorage;

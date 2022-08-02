@@ -5,6 +5,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { iCartTable } from "./CartTable.interface";
 import { brandFilter } from "../../store/reducers/filterSlice";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { iCart } from "../../type/cart";
 
 const CartTable: FC<iCartTable> = ({
   cart,
@@ -34,7 +35,7 @@ const CartTable: FC<iCartTable> = ({
             </tr>
           </thead>
           <TransitionGroup className="cart-list" component={"tbody"}>
-            {cart.map((item: any, i: number) => (
+            {cart.map((item: iCart, i: number) => (
               <CSSTransition key={item.id} timeout={500} classNames="cart-item">
                 <tr>
                   <th>{i + 1}</th>

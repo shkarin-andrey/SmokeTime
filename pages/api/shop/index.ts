@@ -2,28 +2,33 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import shop from "../data/db.json";
 import { iData } from "../../../type/shopData";
-import fs from 'fs'
+import fs from "fs";
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<iData>
 ) {
-  const { limit, page, brand, strong, volume, search }: any = req.query
-  const prev = (+page - 1) * +limit
-  const next = (prev || 0) + +limit
+  const { limit, page, brand, strong, volume, search }: any = req.query;
 
-  const filteredShop = await shop.shop.filter(item => {
-    const filterBrand = brand ? item.brand === brand : true
-    const filterStrong = strong ? item.strong === +strong : true
-    const filterSearch = search ? item.name.toLowerCase().search(search.toLowerCase()) !== -1 : true
+  const prev = (+page - 1) * +limit;
+  const next = (prev || 0) + +limit;
 
-    const filterVolume = volume ? item.volume === +volume : true
+  const filteredShop = await shop.shop.filter((item) => {
+    const filterBrand = brand ? item.brand === brand : true;
+    const filterStrong = strong ? item.strong === +strong : true;
+    const filterSearch = search
+      ? item.name.toLowerCase().search(search.toLowerCase()) !== -1
+      : true;
 
-    return filterBrand && filterStrong && filterSearch && filterVolume ? item : null
-  })
+    const filterVolume = volume ? item.volume === +volume : true;
 
-  const result = await filteredShop.slice(prev, next)
-  const pages = await Math.ceil(filteredShop.length / +limit)
+    return filterBrand && filterStrong && filterSearch && filterVolume
+      ? item
+      : null;
+  });
+
+  const result = await filteredShop.slice(prev, next);
+  const pages = await Math.ceil(filteredShop.length / +limit);
 
   // function generate_url(str: string) {
   //   var url = str.replace(/[\s]+/gi, "-");
