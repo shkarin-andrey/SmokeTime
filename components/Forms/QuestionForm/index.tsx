@@ -3,10 +3,10 @@ import React, { FC } from "react";
 import { Input, Button } from "reactstrap";
 import { initialValuesContacts, validationSchema } from "./config";
 import { initialValuesContactsState } from "./type";
-import useAlert from "./../../../hooks/useAlert";
+import useAlert from "../../../hooks/useAlert";
 import axios from "axios";
 
-const ContactsForm: FC = () => {
+const QuestionForm: FC = () => {
   const { showAlert } = useAlert();
 
   const onSubmit = async (
@@ -15,20 +15,17 @@ const ContactsForm: FC = () => {
     resetForm: () => void
   ) => {
     try {
-      await axios.post(`${process.env.BASE_URL}/api/sendgrid`, {
-        body: JSON.stringify(values),
+      await axios.post(`${process.env.BASE_URL}/api/nodemailer/question`, {
+        values,
       });
-      await setSubmitting(false);
 
       showAlert("Сообщение успешно отправлено", "success");
-      console.log(values);
-
       resetForm();
     } catch (error) {
       console.log(error);
-
       showAlert("Что-то пошло не так", "danger");
     }
+    setSubmitting(false);
   };
 
   return (
@@ -91,4 +88,4 @@ const ContactsForm: FC = () => {
   );
 };
 
-export default ContactsForm;
+export default QuestionForm;

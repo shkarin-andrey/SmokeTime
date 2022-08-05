@@ -1,8 +1,11 @@
 import Head from "next/head";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import seoPreviw from "../public/img/smoketime-seo.jpg";
+import { useAppDispatch } from "../hooks/useAppDispatch";
+import { countActions } from "../store/reducers/cartSlice";
+import useLocalStorage from "../hooks/useLocalStorage";
 interface iMainLayout {
   children: JSX.Element[] | JSX.Element;
   title?: string;
@@ -12,6 +15,12 @@ const MainLayout: FC<iMainLayout> = ({
   children,
   title = "Купить жидкости для вейпа оптом",
 }) => {
+  const dispatch = useAppDispatch();
+  const [countLocal, setCountLocal] = useLocalStorage("count", 0);
+
+  useEffect(() => {
+    dispatch(countActions(countLocal));
+  }, [countLocal]);
   return (
     <>
       <Head>

@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Button, Col, Container, Row } from "reactstrap";
 import { filterSelect } from "../../components/Filter/filterSelect";
-import Modal from "../../components/Modal/Modal";
 import { routes } from "../../routes";
 
 import { useRouter } from "next/router";
@@ -12,6 +11,7 @@ import { brandFilter } from "../../store/reducers/filterSlice";
 import { openModalAction } from "../../store/reducers/modalSlice";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import CallBackForm from "../../components/Forms/CallBackForm";
 
 const Footer = () => {
   const router = useRouter();
@@ -105,7 +105,7 @@ const Footer = () => {
           </Row>
         </Container>
       </footer>
-      <Modal />
+      <CallBackForm />
       <VidgetCart />
       {checkYear && (
         <CheckYear showModal={checkYear} setCheckYear={setCheckYear} />

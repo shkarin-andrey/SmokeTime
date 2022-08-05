@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { Col, Container, Row } from "reactstrap";
-import ContactsForm from "../../components/Forms/ContactsForm";
+import QuestionForm from "../../components/Forms/QuestionForm";
 import { iQuestionsLeft } from "./QuestionsLeft.interface.";
 
 const QuestionsLeft: FC<iQuestionsLeft> = ({ className }) => {
@@ -9,7 +9,7 @@ const QuestionsLeft: FC<iQuestionsLeft> = ({ className }) => {
       <Container>
         <Row>
           <Col className={`mt-3 mt-5 offset-md-2 ${className}`} md={8}>
-            <ContactsForm />
+            <QuestionForm />
           </Col>
         </Row>
       </Container>
