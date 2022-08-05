@@ -5,8 +5,6 @@ import PaginationList from "../Pagination/Pagination";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useAppSelector } from "./../../hooks/useAppSelector";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import { useAppDispatch } from "./../../hooks/useAppDispatch";
-import { countActions } from "../../store/reducers/cartSlice";
 import { iCart } from "../../type/cart";
 
 const ShopCards: FC = () => {
@@ -14,12 +12,6 @@ const ShopCards: FC = () => {
   const [cart, setCart] = useLocalStorage("cart", []);
   const [countLocal, setCountLocal] = useLocalStorage("count", 0);
   const [sumLocal, setSumLocal] = useLocalStorage("sum", 0);
-
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(countActions(countLocal));
-  }, [countLocal]);
 
   const filterItemsCard = (getCart: iCart[]) => {
     const filterCard = getCart.reduce((m: iCart[], o: iCart) => {

@@ -1,5 +1,4 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";

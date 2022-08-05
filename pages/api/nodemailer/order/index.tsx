@@ -54,8 +54,8 @@ async function sendEmail(req: NextApiRequest, res: NextApiResponse) {
       port: 465,
       secure: true,
       auth: {
-        user: "shkarinandrew1@gmail.com",
-        pass: "uuwwarmlkjwbkepa",
+        user: process.env.NODEMAILER_LOGIN,
+        pass: process.env.NODEMAILER_PASS,
       },
     });
 
