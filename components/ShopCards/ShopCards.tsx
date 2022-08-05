@@ -6,12 +6,20 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useAppSelector } from "./../../hooks/useAppSelector";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { iCart } from "../../type/cart";
+import { countActions } from "../../store/reducers/cartSlice";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
 
 const ShopCards: FC = () => {
   const { shop, pages } = useAppSelector((state) => state.shop);
   const [cart, setCart] = useLocalStorage("cart", []);
   const [countLocal, setCountLocal] = useLocalStorage("count", 0);
   const [sumLocal, setSumLocal] = useLocalStorage("sum", 0);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(countActions(countLocal));
+  }, [countLocal]);
 
   const filterItemsCard = (getCart: iCart[]) => {
     const filterCard = getCart.reduce((m: iCart[], o: iCart) => {
