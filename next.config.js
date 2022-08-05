@@ -9,10 +9,10 @@ const nextConfig = {
   },
   env: {
     // BASE_URL: "http://localhost:3000/",
-    // BASE_URL: "https://smoke-time.herokuapp.com/",
     BASE_URL: "https://smoke-time.vercel.app/",
     NODEMAILER_LOGIN: "shkarinandrew1@gmail.com",
     NODEMAILER_PASS: "uuwwarmlkjwbkepa",
+    INFO_EMAIL: "smoke-time-opt@mail.ru",
   },
 };
 

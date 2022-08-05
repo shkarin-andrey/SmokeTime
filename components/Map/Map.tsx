@@ -20,15 +20,15 @@ const Map: FC<iMap> = ({ className }) => {
         <div className="map__item">
           <div>
             <span>Email:</span>
-            <Link href="mailto:info@domen.ru">
-              <a> info@domen.ru</a>
+            <Link href="mailto:smoke-time-opt@mail.ru">
+              <a> smoke-time-opt@mail.ru</a>
             </Link>
           </div>
         </div>
         <div className="map__item">
           <span>Телефон:</span>
-          <Link href="tel:+79999999999">
-            <a> +7 (999) 999-99-99</a>
+          <Link href="tel:+79272971619">
+            <a> +7 (927) 297-16-19</a>
           </Link>
         </div>
         <address className="map__item">

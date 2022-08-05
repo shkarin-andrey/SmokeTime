@@ -76,8 +76,8 @@ const Footer = () => {
               <ul>
                 <li>
                   <span>Email:</span>{" "}
-                  <Link href="mailto:info@domen.ru">
-                    <a className="gray text-nowrap">info@domen.ru</a>
+                  <Link href="mailto:smoke-time-opt@mail.ru">
+                    <a className="gray text-nowrap">smoke-time-opt@mail.ru</a>
                   </Link>
                 </li>
                 <li>
