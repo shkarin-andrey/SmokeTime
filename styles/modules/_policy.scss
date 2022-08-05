@@ -1,0 +1,21 @@
+.policy {
+  ul {
+    margin-bottom: 20px;
+    li {
+      list-style-type: none;
+      margin-bottom: 10px;
+      ul {
+        padding: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .policy {
+    h1 {
+      font-size: 35px;
+      line-height: 1;
+    }
+  }
+}
