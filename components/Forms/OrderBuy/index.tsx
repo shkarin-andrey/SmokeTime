@@ -5,9 +5,14 @@ import { Row, Col, FormGroup, Label, Input, Button } from "reactstrap";
 import { initialValues, validationSchema } from "./config";
 import { initialValuesOrderBuy } from "./type";
 import useAlert from "./../../../hooks/useAlert";
+import useLocalStorage from "../../../hooks/useLocalStorage";
 
 const OrderBuy: FC = () => {
   const { showAlert } = useAlert();
+
+  const [cart, setCart] = useLocalStorage("cart", []);
+  const [countLocal, setCountLocal] = useLocalStorage("count", 0);
+  const [sumLocal, setSumLocal] = useLocalStorage("sum", 0);
 
   const onSubmit = async (
     values: initialValuesOrderBuy,
@@ -15,18 +20,23 @@ const OrderBuy: FC = () => {
     resetForm: () => void
   ) => {
     try {
-      await axios.post(`${process.env.BASE_URL}/api/sendgrid`, {
-        body: JSON.stringify(values),
+      const card = {
+        cart,
+        countLocal,
+        sumLocal,
+      };
+      const data = { values, card };
+
+      await axios.post(`${process.env.BASE_URL}/api/nodemailer/order`, {
+        data,
       });
       showAlert("Заказ успешно оформлен", "success");
+      resetForm();
     } catch (error) {
       console.log(error);
-
       showAlert("Что-то пошло не так", "danger");
     }
-    console.log(values);
     setSubmitting(false);
-    resetForm();
   };
 
   return (

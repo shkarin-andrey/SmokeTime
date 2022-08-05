@@ -11,8 +11,8 @@ const nextConfig = {
     // BASE_URL: "http://localhost:3000/",
     // BASE_URL: "https://smoke-time.herokuapp.com/",
     BASE_URL: "https://smoke-time.vercel.app/",
-    API_SENDGRID_KEY:
-      "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",
+    NODEMAILER_LOGIN: "shkarinandrew1@gmail.com",
+    NODEMAILER_PAsS: "uuwwarmlkjwbkepa",
   },
 };
 

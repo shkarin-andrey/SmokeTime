@@ -20,6 +20,7 @@
     "moysklad": "^0.10.1",
     "next": "12.1.5",
     "next-redux-wrapper": "^7.0.5",
+    "nodemailer": "^6.7.7",
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-redux": "^8.0.1",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "@types/node": "17.0.26",
+    "@types/nodemailer": "^6.4.4",
     "@types/react": "18.0.6",
     "@types/react-dom": "18.0.2",
     "@types/react-transition-group": "^4.4.4",
