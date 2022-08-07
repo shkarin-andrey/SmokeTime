@@ -7,4 +7,5 @@ interface iBrand {
   brand: string;
   minPrice: string;
   link: string;
+  img?: string;
 }
