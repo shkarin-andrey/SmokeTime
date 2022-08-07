@@ -10,10 +10,15 @@ import useAlert from "../../../hooks/useAlert";
 import { useAppDispatch } from "../../../hooks/useAppDispatch";
 import { useAppSelector } from "../../../hooks/useAppSelector";
 import { openModalAction } from "../../../store/reducers/modalSlice";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 const CallBackForm: FC = () => {
   const dispatch = useAppDispatch();
   const { showModal } = useAppSelector((state) => state.openModal);
+
+  showModal
+    ? disableBodyScroll(document.body)
+    : enableBodyScroll(document.body);
 
   const { showAlert } = useAlert();
 

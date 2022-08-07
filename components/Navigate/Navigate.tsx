@@ -2,11 +2,14 @@ import Link from "next/link";
 import { FC, useState } from "react";
 import { routes } from "../../routes";
 import { useRouter } from "next/router";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 const Navigate: FC = () => {
   const router = useRouter();
   const activeRouter = router.pathname;
   const [show, setShow] = useState(false);
+
+  show ? disableBodyScroll(document.body) : enableBodyScroll(document.body);
 
   return (
     <nav className={`navigate ${show ? "active" : ""}`}>
