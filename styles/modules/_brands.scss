@@ -36,6 +36,9 @@
         transition: all 0.3s;
         width: 100%;
         text-align: center;
+        margin: 0;
+        padding: 7px 0;
+        background-color: rgba(0, 0, 0, 0.7);
 
         span {
           font-weight: 700;
@@ -43,10 +46,10 @@
         }
       }
 
-      &:first-child {
-        grid-row-start: 1;
-        grid-row-end: 3;
-      }
+      // &:first-child {
+      //   grid-row-start: 1;
+      //   grid-row-end: 3;
+      // }
 
       &:hover {
         box-shadow: 0 0 20px $purple;

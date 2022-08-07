@@ -12,10 +12,18 @@ const BrandsCards: FC<iBrandsCards> = ({ context, btn }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
+  const bgImage = (bgImg: string | undefined) => {
+    if (!bgImg) {
+      return `url(${img.src}) center center / contain no-repeat`;
+    }
+    return `url(${bgImg}) center center / cover no-repeat`;
+  };
+
   const linkRouter = (link: string, brand: string) => {
     dispatch(brandFilter(brand));
     router.push(link);
   };
+
   return (
     <section className={`brands ${!btn ? "pt-0" : ""}`}>
       <Container>
@@ -23,12 +31,14 @@ const BrandsCards: FC<iBrandsCards> = ({ context, btn }) => {
         <div className={`brands__grid mt-5 ${!btn ? "mb-5" : ""}`}>
           {context.map((item, i) => (
             <React.Fragment key={item.brand}>
-              {btn && i < 5 && (
+              {btn && i < 6 && (
                 <div
                   className="brands__grid__item"
                   onClick={() => linkRouter(item.link, item.brand)}
+                  style={{
+                    background: bgImage(item?.img),
+                  }}
                 >
-                  <img src={img.src} alt={item.brand} />
                   <h3 className="brands__grid__item-title">
                     {item.brand}
                     <span>от {item.minPrice} руб.</span>
@@ -40,8 +50,10 @@ const BrandsCards: FC<iBrandsCards> = ({ context, btn }) => {
                   key={item.brand}
                   className="brands__grid__item"
                   onClick={() => linkRouter(item.link, item.brand)}
+                  style={{
+                    background: bgImage(item?.img),
+                  }}
                 >
-                  <img src={img.src} alt={item.brand} />
                   <h3 className="brands__grid__item-title">
                     {item.brand}
                     <span>от {item.minPrice} руб.</span>
