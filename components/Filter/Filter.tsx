@@ -18,21 +18,20 @@ const Filter: FC = () => {
     (state) => state.shopFilter
   );
 
+  const querySearch = search.length ? `search=${search}&` : "";
+  const queryBrand = brand !== "all" ? `brand=${brand}&` : "";
+  const queryStrong = strong !== "all" ? `strong=${strong}&` : "";
+  const queryVolume = volume !== "all" ? `volume=${volume}` : "";
+
   const [value, setValue] = useState<string>("");
   const [timer, setTimer] = useState<ReturnType<typeof setTimeout> | null>(
     null
   );
 
   useEffect(() => {
-    const querySearch = search.length ? `search=${search}&` : "";
-    const queryBrand = brand !== "all" ? `brand=${brand}&` : "";
-    const queryStrong = strong !== "all" ? `strong=${strong}&` : "";
-    const queryVolume = volume !== "all" ? `volume=${volume}` : "";
-
     router.push(
       `/shop?${querySearch + queryBrand + queryStrong + queryVolume}&page=1`
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [brand, strong, volume, search]);
 
   const inputSearch = (value: string) => {

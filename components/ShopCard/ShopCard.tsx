@@ -40,10 +40,16 @@ const ShopCard: FC<iShopCard> = ({
     <Col sm={6} xl={4}>
       <div className="card">
         <div
-          className="card__top"
+          className="card__top position-relative"
           onClick={() => router.push("/shop/" + title)}
         >
-          <Image src={image ? image : noImg} alt={name} />
+          <Image
+            src={image || noImg}
+            alt={name}
+            layout={"fill"}
+            placeholder={"blur"}
+            blurDataURL={image}
+          />
           <h3>{name}</h3>
         </div>
         <div className="card__bottom">

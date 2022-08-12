@@ -1,6 +1,6 @@
 import ShopCards from "../../components/ShopCards/ShopCards";
 import MainLayout from "../../layout";
-import { NextPage } from "next";
+import { GetServerSidePropsContext, NextPage } from "next";
 import { iData } from "../../type/shopData";
 import { Col, Container, Row } from "reactstrap";
 import Filter from "../../components/Filter/Filter";
@@ -35,8 +35,10 @@ const Shop: NextPage<iData> = ({ shop, pages }) => {
   );
 };
 
-Shop.getInitialProps = async ({ query }) => {
-  const { page, brand, strong, volume, search } = query;
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const { page, brand, strong, volume, search } = context.query;
 
   const querySearch = search ? `search=${search}&` : "";
   const queryBrand = brand ? `brand=${brand}&` : "";
@@ -51,13 +53,17 @@ Shop.getInitialProps = async ({ query }) => {
   if (brand || strong || volume || page || brand) {
     const resp = await fetch(url);
     const shop = await resp.json();
-    return { ...shop };
+    return {
+      props: { ...shop },
+    };
   } else {
     const url = `${process.env.BASE_URL}/api/shop?limit=21&${queryPage}`;
 
     const resp = await fetch(url);
     const shop = await resp.json();
-    return { ...shop };
+    return {
+      props: { ...shop },
+    };
   }
 };
 

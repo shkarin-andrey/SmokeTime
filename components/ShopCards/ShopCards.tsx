@@ -8,6 +8,7 @@ import useLocalStorage from "../../hooks/useLocalStorage";
 import { iCart } from "../../type/cart";
 import { countActions } from "../../store/reducers/cartSlice";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { Row } from "reactstrap";
 
 const ShopCards: FC = () => {
   const { shop, pages } = useAppSelector((state) => state.shop);
@@ -61,23 +62,23 @@ const ShopCards: FC = () => {
 
   return (
     <section className="shop">
-      <TransitionGroup className="row">
-        {shop.length ? (
+      <Row>
+        {shop ? (
           shop.map((item: iDataItem) => (
-            <CSSTransition key={item.id} timeout={300} classNames="shop-item">
-              <ShopCard
-                name={item.name}
-                price={item.price}
-                id={item.id}
-                title={item.meta.title}
-                addItemsCard={addItemsCard}
-              />
-            </CSSTransition>
+            <ShopCard
+              key={item.id}
+              name={item.name}
+              price={item.price}
+              id={item.id}
+              title={item.meta.title}
+              addItemsCard={addItemsCard}
+              image={item.meta.img}
+            />
           ))
         ) : (
           <p className="text-center">По заданному фильтру товаров не найдено</p>
         )}
-      </TransitionGroup>
+      </Row>
       {pages > 1 ? <PaginationList pages={pages} /> : null}
     </section>
   );

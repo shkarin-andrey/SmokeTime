@@ -1,23 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
 import { Button, Container } from "reactstrap";
-import img from "../../public/img/no-img.png";
+import noImg from "../../public/img/no-img.png";
 import { useRouter } from "next/router";
 import { FC } from "react";
 import React from "react";
 import { iBrandsCards } from "./BrandsCards.interface";
 import { brandFilter } from "../../store/reducers/filterSlice";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
+import Image from "next/image";
 
 const BrandsCards: FC<iBrandsCards> = ({ context, btn }) => {
   const router = useRouter();
   const dispatch = useAppDispatch();
 
-  const bgImage = (bgImg: string | undefined) => {
-    if (!bgImg) {
-      return `url(${img.src}) center center / contain no-repeat`;
-    }
-    return `url(${bgImg}) center center / cover no-repeat`;
-  };
+  // const bgImage = (bgImg: string | undefined) => {
+  //   if (!bgImg) {
+  //     return `url(${img.src}) center center / contain no-repeat`;
+  //   }
+  //   return `url(${bgImg}) center center / cover no-repeat`;
+  // };
 
   const linkRouter = (link: string, brand: string) => {
     dispatch(brandFilter(brand));
@@ -33,12 +34,19 @@ const BrandsCards: FC<iBrandsCards> = ({ context, btn }) => {
             <React.Fragment key={item.brand}>
               {btn && i < 6 && (
                 <div
-                  className="brands__grid__item"
+                  className="brands__grid__item position-relative"
                   onClick={() => linkRouter(item.link, item.brand)}
-                  style={{
-                    background: bgImage(item?.img),
-                  }}
+                  // style={{
+                  //   background: bgImage(item?.img),
+                  // }}
                 >
+                  <Image
+                    src={item?.img || noImg}
+                    alt={item.brand}
+                    layout={"fill"}
+                    blurDataURL={item?.img}
+                    placeholder="blur"
+                  />
                   <h3 className="brands__grid__item-title">
                     {item.brand}
                     <span>от {item.minPrice} руб.</span>
@@ -48,12 +56,19 @@ const BrandsCards: FC<iBrandsCards> = ({ context, btn }) => {
               {!btn && (
                 <div
                   key={item.brand}
-                  className="brands__grid__item"
+                  className="brands__grid__item position-relative"
                   onClick={() => linkRouter(item.link, item.brand)}
-                  style={{
-                    background: bgImage(item?.img),
-                  }}
+                  // style={{
+                  //   background: bgImage(item?.img),
+                  // }}
                 >
+                  <Image
+                    src={item?.img || noImg}
+                    alt={item.brand}
+                    layout={"fill"}
+                    blurDataURL={item?.img}
+                    placeholder="blur"
+                  />
                   <h3 className="brands__grid__item-title">
                     {item.brand}
                     <span>от {item.minPrice} руб.</span>
