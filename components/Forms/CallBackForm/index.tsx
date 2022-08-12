@@ -11,6 +11,7 @@ import { useAppDispatch } from "../../../hooks/useAppDispatch";
 import { useAppSelector } from "../../../hooks/useAppSelector";
 import { openModalAction } from "../../../store/reducers/modalSlice";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import Image from "next/image";
 
 const CallBackForm: FC = () => {
   const dispatch = useAppDispatch();
@@ -59,7 +60,7 @@ const CallBackForm: FC = () => {
               className="offset-md-2 border rounded bg-dark position-relative"
             >
               <div
-                className="close position-absolute top-0 end-0 p-2 fs-4"
+                className="close position-absolute z-10 top-0 end-0 p-2 fs-4"
                 onClick={() => dispatch(openModalAction(false))}
               >
                 &#10008;
@@ -123,12 +124,16 @@ const CallBackForm: FC = () => {
                     )}
                   </Formik>
                 </Col>
-                <Col lg={6} className="pe-lg-0 px-0 px-lg-2 d-none d-lg-block">
+                <Col
+                  lg={6}
+                  className="pe-lg-0 px-0 px-lg-2 d-none d-lg-block position-relative"
+                >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     className="w-100 h-100"
-                    src={support.src}
+                    src={support}
                     alt="SmokeTime"
+                    layout="fill"
                   />
                 </Col>
               </Row>

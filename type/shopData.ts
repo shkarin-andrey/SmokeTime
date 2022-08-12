@@ -10,10 +10,11 @@ export interface iDataItem {
   strong: number | null | string;
   volume: number;
   price: number;
-  taste: string
-  meta: iMeta
+  taste: string;
+  meta: iMeta;
 }
 
 interface iMeta {
-  title: string
+  title: string;
+  img?: string;
 }

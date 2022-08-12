@@ -1,5 +1,10 @@
 import MainLayout from "../../layout";
-import { NextPage } from "next";
+import {
+  GetServerSidePropsContext,
+  GetStaticProps,
+  GetStaticPropsContext,
+  NextPage,
+} from "next";
 import { iDataItem } from "../../type/shopData";
 import { Button, Col, Container, Input, Row } from "reactstrap";
 import Image from "next/image";
@@ -18,6 +23,7 @@ const ShopItem: NextPage<iDataItem> = ({
   volume,
   strong,
   taste,
+  meta,
 }) => {
   const [count, setCount] = useState<number>(1);
   const [cart, setCart] = useLocalStorage("cart", []);
@@ -82,16 +88,29 @@ const ShopItem: NextPage<iDataItem> = ({
 
   return (
     <MainLayout>
-      <h1 className="big-title">
-        Жидкость для вейпа <span>{name}</span>
-      </h1>
+      <Container>
+        <h1 className="big-title">
+          Жидкость для вейпа <span>{name}</span>
+        </h1>
+      </Container>
       <section className="shop_item_card">
         <Container>
           <Row>
-            <Col md={4} className="d-flex justify-content-center">
-              <Image src={noImg} alt={name} />
+            <Col
+              md={5}
+              lg={4}
+              className="shop_item_card_img d-flex justify-content-center position-relative"
+            >
+              <Image
+                src={meta.img || noImg}
+                alt={name}
+                layout={"fill"}
+                objectFit="cover"
+                placeholder={"blur"}
+                blurDataURL={meta.img}
+              />
             </Col>
-            <Col md={8}>
+            <Col md={7} lg={8}>
               <div className="wrapper">
                 <div className="shop_item_card__info">
                   <div className="shop_item_card__info-item">
@@ -141,12 +160,18 @@ const ShopItem: NextPage<iDataItem> = ({
               <p className="descr">
                 <span>Описание:</span> Жидкость для электронных парогенераторов
                 «{name}». Это высококлассная линейка жидкостей на основе
-                качественных компонентов. Меры предосторожности: Не
-                рекомендуется тем, кто не курит и не употребляет никотин.
-                Использовать только с сертифицированными pod-системами. Хранить
-                в сухом и недоступном для детей месте. Избегать попадания прямых
-                солнечных лучей. Запрещается использование лицам не достигшим 18
-                лет.
+                качественных компонентов.
+              </p>
+              <p className="descr">
+                <span>Меры предосторожности:</span> Не рекомендуется тем, кто не
+                курит и не употребляет никотин. Использовать только с
+                сертифицированными pod-системами. Хранить в сухом и недоступном
+                для детей месте. Избегать попадания прямых солнечных лучей.
+                <span>
+                  {" "}
+                  Запрещается использование лицам не достигшим 18 лет
+                </span>
+                .
               </p>
             </Col>
           </Row>
@@ -157,13 +182,15 @@ const ShopItem: NextPage<iDataItem> = ({
   );
 };
 
-ShopItem.getInitialProps = async ({ query }) => {
-  const title = query.name;
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const title = context.query.name;
 
   const resp = await fetch(`${process.env.BASE_URL}/api/shop/${title}`);
   const dataItem = await resp.json();
 
-  return { ...dataItem };
+  return { props: { ...dataItem } };
 };
 
 export default ShopItem;

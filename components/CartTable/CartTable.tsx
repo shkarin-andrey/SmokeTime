@@ -49,7 +49,7 @@ const CartTable: FC<iCartTable> = ({
                       updateItemCart(item.count, item.sum);
                     }}
                   >
-                    &#10008;
+                    <Button color="danger">&#10008;</Button>
                   </td>
                 </tr>
               </CSSTransition>

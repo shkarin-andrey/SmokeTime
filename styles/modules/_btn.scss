@@ -29,4 +29,18 @@
     transition: all 0.3s;
     color: $white;
   }
+
+  &-danger {
+    background-color: $danger;
+    filter: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: darken($danger, 10);
+      outline: none;
+      border: none;
+      box-shadow: none;
+    }
+  }
 }

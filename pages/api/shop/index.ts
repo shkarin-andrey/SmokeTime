@@ -1,8 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import shop from "../data/db.json";
+import { shop } from "../data/db";
 import { iData } from "../../../type/shopData";
-import fs from "fs";
 
 export default async function handler(
   req: NextApiRequest,
@@ -13,7 +12,7 @@ export default async function handler(
   const prev = (+page - 1) * +limit;
   const next = (prev || 0) + +limit;
 
-  const filteredShop = await shop.shop.filter((item) => {
+  const filteredShop = await shop.filter((item) => {
     const filterBrand = brand ? item.brand === brand : true;
     const filterStrong = strong ? item.strong === +strong : true;
     const filterSearch = search
@@ -75,6 +74,5 @@ export default async function handler(
   //   if (err) throw err;
   //   console.log('Data has been replaced!');
   // });
-
   res.status(200).json({ shop: result, pages });
 }
