@@ -11,7 +11,7 @@ export const whyCards = [
   {
     title: "Оригинальная продукция",
     descr:
-      "Мы являемся дистрибютерами таких брендов как: Hasky, VOODOO и другие.",
+      "Мы являемся дистрибьютерами таких брендов как: VoodoLab, SkyVape, Toyz и другие.",
     component: <Original />,
   },
   {
