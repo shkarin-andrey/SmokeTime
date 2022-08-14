@@ -43,13 +43,16 @@ const CartTable: FC<iCartTable> = ({
                   <td>{new Intl.NumberFormat("ru-RU").format(item.count)}</td>
                   <td>{item.price}</td>
                   <td>{new Intl.NumberFormat("ru-RU").format(item.sum)}</td>
-                  <td
-                    onClick={() => {
-                      deleteItemCart(item.id);
-                      updateItemCart(item.count, item.sum);
-                    }}
-                  >
-                    <Button color="danger">&#10008;</Button>
+                  <td>
+                    <Button
+                      color="danger"
+                      onClick={() => {
+                        deleteItemCart(item.id);
+                        updateItemCart(item.count, item.sum);
+                      }}
+                    >
+                      &#10008;
+                    </Button>
                   </td>
                 </tr>
               </CSSTransition>
