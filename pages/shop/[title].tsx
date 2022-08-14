@@ -1,5 +1,6 @@
 import MainLayout from "../../layout";
 import {
+  GetServerSideProps,
   GetServerSidePropsContext,
   GetStaticPaths,
   GetStaticProps,
@@ -187,44 +188,55 @@ const ShopItem: NextPage<iDataItem> = ({
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  try {
-    const resp = await fetch(`${process.env.BASE_URL}api/shop`);
-    const data = await resp.json();
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   try {
+//     const resp = await fetch(`${process.env.BASE_URL}api/shop`);
+//     const data = await resp.json();
 
-    const paths = data.shop.map((item: iDataItem) => ({
-      params: {
-        title: item.meta.title.toString(),
-      },
-    }));
+//     const paths = data.shop.map((item: iDataItem) => ({
+//       params: {
+//         title: item.meta.title.toString(),
+//       },
+//     }));
 
-    return {
-      paths,
-      fallback: false,
-    };
-  } catch (error) {
-    return {
-      paths: [],
-      fallback: true,
-    };
-  }
-};
+//     return {
+//       paths,
+//       fallback: false,
+//     };
+//   } catch (error) {
+//     return {
+//       paths: [],
+//       fallback: true,
+//     };
+//   }
+// };
 
-export const getStaticProps: GetStaticProps = async (
-  context: GetStaticPropsContext
+// export const getStaticProps: GetStaticProps = async (
+//   context: GetStaticPropsContext
+// ) => {
+//   try {
+//     const { title }: any = context.params;
+
+//     const resp = await fetch(`${process.env.BASE_URL}api/shop/${title}`);
+//     const dataItem = await resp.json();
+
+//     return { props: { ...dataItem } };
+//   } catch (error) {
+//     return {
+//       props: {},
+//     };
+//   }
+// };
+
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
 ) => {
-  try {
-    const { title }: any = context.params;
+  const title = context.query.title;
 
-    const resp = await fetch(`${process.env.BASE_URL}api/shop/${title}`);
-    const dataItem = await resp.json();
+  const resp = await fetch(`${process.env.BASE_URL}/api/shop/${title}`);
+  const dataItem = await resp.json();
 
-    return { props: { ...dataItem } };
-  } catch (error) {
-    return {
-      props: {},
-    };
-  }
+  return { props: { ...dataItem } };
 };
 
 export default ShopItem;
