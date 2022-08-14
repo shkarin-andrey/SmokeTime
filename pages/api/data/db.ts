@@ -4198,6 +4198,7 @@ export const shop = [
     price: 230,
     meta: {
       title: "zhidkost-dlya-vejpa-s-2-mishka---dynya-arbuz-ogurets-30-ml",
+      img: "/img/shop/PraidVape/Мишка/S-2-[МИШКА]-Дыня-арбуз-огурец-30мл.jpg",
     },
   },
   {
@@ -4210,6 +4211,7 @@ export const shop = [
     price: 230,
     meta: {
       title: "zhidkost-dlya-vejpa-s-2-mishka---mors-smorodina-kalina-30-ml",
+      img: "/img/shop/PraidVape/Мишка/S-2-[МИШКА]-Морс-смородина-калина-30мл.jpg",
     },
   },
   {
@@ -4222,6 +4224,7 @@ export const shop = [
     price: 230,
     meta: {
       title: "zhidkost-dlya-vejpa-s-2-mishka---ponchik-s-kremom-30-ml",
+      img: "/img/shop/PraidVape/Мишка/S-2-[МИШКА]-Пончик-с-кремом-30мл.jpg",
     },
   },
   {
@@ -4234,6 +4237,7 @@ export const shop = [
     price: 230,
     meta: {
       title: "zhidkost-dlya-vejpa-s-2-mishka---hvoya-yagody-30-ml",
+      img: "/img/shop/PraidVape/Мишка/S-2-[МИШКА]-Хвоя-ягоды-30мл.jpg",
     },
   },
   {
@@ -4246,6 +4250,7 @@ export const shop = [
     price: 230,
     meta: {
       title: "zhidkost-dlya-vejpa-s-2-mishka---holodnyj-ananas-30-ml",
+      img: "/img/shop/PraidVape/Мишка/S-2-[МИШКА]-Холодный-ананас-30мл.jpg",
     },
   },
   {
@@ -4258,6 +4263,7 @@ export const shop = [
     price: 230,
     meta: {
       title: "zhidkost-dlya-vejpa-s-2-mishka---chaj-smorodina-limon-30-ml",
+      img: "/img/shop/PraidVape/Мишка/S-2-[МИШКА]-Чай-смородина-лимон-30мл.jpg",
     },
   },
   {
@@ -4270,6 +4276,7 @@ export const shop = [
     price: 230,
     meta: {
       title: "zhidkost-dlya-vejpa-s-2-mishka---yabloko-energetik-30-ml",
+      img: "/img/shop/PraidVape/Мишка/S-2-[МИШКА]-Яблоко-энергетик-30мл.jpg",
     },
   },
   {
@@ -4282,6 +4289,7 @@ export const shop = [
     price: 230,
     meta: {
       title: "zhidkost-dlya-vejpa-s-2-mishka---yagody-anis-30-ml",
+      img: "/img/shop/PraidVape/Мишка/S-2-[МИШКА]-Ягоды-анис-30мл.jpg",
     },
   },
   {
@@ -4378,6 +4386,7 @@ export const shop = [
     price: 230,
     meta: {
       title: "zhidkost-dlya-vejpa-s-2-mors-moroz---malina-ezhevika-30-ml",
+      img: "/img/shop/PraidVape/МорсМороз/S-2-[Морс-Мороз]-Малина-ежевика-30мл.jpg",
     },
   },
   {
@@ -4390,6 +4399,7 @@ export const shop = [
     price: 230,
     meta: {
       title: "zhidkost-dlya-vejpa-s-2-mors-moroz---malina-zemlyanika-30-ml",
+      img: "/img/shop/PraidVape/МорсМороз/S-2-[Морс-Мороз]-Малина-земляника-30мл.jpg",
     },
   },
   {
@@ -4403,6 +4413,7 @@ export const shop = [
     meta: {
       title:
         "zhidkost-dlya-vejpa-s-2-mors-moroz---chernika-chernaya-smorodina-30-ml",
+      img: "/img/shop/PraidVape/МорсМороз/S-2-[Морс-Мороз]-Черника-черная-смородина-30мл.jpg",
     },
   },
   {
@@ -4463,6 +4474,7 @@ export const shop = [
     price: 230,
     meta: {
       title: "zhidkost-dlya-vejpa-s-2-mors---malina---asai-30-ml",
+      img: "/img/shop/PraidVape/Морс/S-2-[Морс]-Малина-асаи-30мл.jpg",
     },
   },
   {
@@ -4475,6 +4487,7 @@ export const shop = [
     price: 230,
     meta: {
       title: "zhidkost-dlya-vejpa-s-2-mors---smorodina-brusnika-30-ml",
+      img: "/img/shop/PraidVape/Морс/S-2-[Морс]-Смородина-брусника-30мл.jpg",
     },
   },
   {
@@ -4487,6 +4500,7 @@ export const shop = [
     price: 190,
     meta: {
       title: "zhidkost-dlya-vejpa-s-4-boom---ledyanaya-dynya-30-ml",
+      img: "/img/shop/PraidVape/Boom/S-4-[BOOM]-Ледяная-дыня-30мл.jpg",
     },
   },
   {
@@ -4499,6 +4513,7 @@ export const shop = [
     price: 190,
     meta: {
       title: "zhidkost-dlya-vejpa-s-4-boom---ledyanaya-klubnika-30-ml",
+      img: "/img/shop/PraidVape/Boom/S-4-[BOOM]-Ледяная-клубника-30мл.jpg",
     },
   },
   {
@@ -4512,6 +4527,7 @@ export const shop = [
     meta: {
       title:
         "zhidkost-dlya-vejpa-s-4-boom---ledyanaya-chernaya-smorodina-30-ml",
+      img: "/img/shop/PraidVape/Boom/S-4-[BOOM]-Ледяная-чёрная-смородина-30мл.jpg",
     },
   },
   {
@@ -4524,6 +4540,7 @@ export const shop = [
     price: 190,
     meta: {
       title: "zhidkost-dlya-vejpa-s-4-boom---ledyanaya-chernika-30-ml",
+      img: "/img/shop/PraidVape/Boom/S-4-[BOOM]-Ледяная-черника-30мл.jpg",
     },
   },
   {
@@ -4536,6 +4553,7 @@ export const shop = [
     price: 190,
     meta: {
       title: "zhidkost-dlya-vejpa-s-4-boom---ledyanoj-banan-30-ml",
+      img: "/img/shop/PraidVape/Boom/S-4-[BOOM]-Ледяной-банан-30мл.jpg",
     },
   },
   {
@@ -4596,6 +4614,7 @@ export const shop = [
     price: 190,
     meta: {
       title: "zhidkost-dlya-vejpa-s-4-vape-nation---mango-lemongrass-30-ml",
+      img: "/img/shop/PraidVape/VapeNation/S-4-[Vape-Nation]-Mango-Lemongrass-30мл.jpg",
     },
   },
   {
@@ -4608,6 +4627,7 @@ export const shop = [
     price: 190,
     meta: {
       title: "zhidkost-dlya-vejpa-s-4-vape-nation---raspberry-jam-tea-30-ml",
+      img: "/img/shop/PraidVape/VapeNation/S-4-[Vape-Nation]-Raspberry-jam-Tea-30мл.jpg",
     },
   },
   {
@@ -4620,6 +4640,7 @@ export const shop = [
     price: 190,
     meta: {
       title: "zhidkost-dlya-vejpa-s-4-vape-nation---tobacco-blend-30-ml",
+      img: "/img/shop/PraidVape/VapeNation/S-4-[Vape-Nation]-Tobacco-blend-30мл.jpg",
     },
   },
   {
@@ -4777,6 +4798,7 @@ export const shop = [
     price: 275,
     meta: {
       title: "zhidkost-dlya-vejpa-s-5-mishka---cinnabon-30-ml",
+      img: "/img/shop/PraidVape/Мишка/S-2-[МИШКА]-Cinnabon-30мл.jpg",
     },
   },
   {
@@ -4885,6 +4907,7 @@ export const shop = [
     price: 275,
     meta: {
       title: "zhidkost-dlya-vejpa-s-5-mishka-v2---vanilnyj-popkorn-30-ml",
+      img: "/img/shop/PraidVape/МишкаВ2/S-2-[МИШКА]-V2-Ванильный-попкорн-30мл.jpg",
     },
   },
   {
@@ -4897,6 +4920,7 @@ export const shop = [
     price: 275,
     meta: {
       title: "zhidkost-dlya-vejpa-s-5-mishka-v2---kofe-3-v-1-30-ml",
+      img: "/img/shop/PraidVape/МишкаВ2/S-2-[МИШКА]-V2-Кофе-3в1-30мл.jpg",
     },
   },
   {
@@ -4909,6 +4933,7 @@ export const shop = [
     price: 275,
     meta: {
       title: "zhidkost-dlya-vejpa-s-5-mishka-v2---kremovyj-tabak-30-ml",
+      img: "/img/shop/PraidVape/МишкаВ2/S-2-[МИШКА]-V2-Кремовый-табак-30мл.jpg",
     },
   },
   {
@@ -4921,6 +4946,7 @@ export const shop = [
     price: 275,
     meta: {
       title: "zhidkost-dlya-vejpa-s-5-mishka-v2---mango-marakuya-30-ml",
+      img: "/img/shop/PraidVape/МишкаВ2/S-2-[МИШКА]-V2-Манго-маракуя-30мл.jpg",
     },
   },
   {
@@ -4933,6 +4959,7 @@ export const shop = [
     price: 275,
     meta: {
       title: "zhidkost-dlya-vejpa-s-5-mishka-v2---moroznaya-smorodina-30-ml",
+      img: "/img/shop/PraidVape/МишкаВ2/S-2-[МИШКА]-V2-Морозная-Смородина-30мл.jpg",
     },
   },
   {
@@ -4945,6 +4972,7 @@ export const shop = [
     price: 275,
     meta: {
       title: "zhidkost-dlya-vejpa-s-5-mishka-v2---holodnaya-vishnya-30-ml",
+      img: "/img/shop/PraidVape/МишкаВ2/S-2-[МИШКА]-V2-Холодная-вишня-30мл.jpg",
     },
   },
   {
@@ -5030,6 +5058,7 @@ export const shop = [
     price: 275,
     meta: {
       title: "zhidkost-dlya-vejpa-s-5-mors---zhimolost-oblepiha-30-ml",
+      img: "/img/shop/PraidVape/Морс/S-2-[Морс]-Жимолость-Облепиха-30мл.jpg",
     },
   },
   {

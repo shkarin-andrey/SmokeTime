@@ -68,7 +68,7 @@ const ShopCard: FC<iShopCard> = ({
                 &#10010;
               </div>
             </div>
-            <Button onClick={() => addItemsCard(stateCart)}>Заказать</Button>
+            <Button onClick={() => addItemsCard(stateCart)}>В корзину</Button>
           </div>
           <div className="card__bottom__price">
             <div className="card__bottom__price-prev">

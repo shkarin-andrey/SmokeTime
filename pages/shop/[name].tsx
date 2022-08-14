@@ -24,6 +24,7 @@ const ShopItem: NextPage<iDataItem> = ({
   strong,
   taste,
   meta,
+  brand,
 }) => {
   const [count, setCount] = useState<number>(1);
   const [cart, setCart] = useLocalStorage("cart", []);
@@ -113,6 +114,9 @@ const ShopItem: NextPage<iDataItem> = ({
             <Col md={7} lg={8}>
               <div className="wrapper">
                 <div className="shop_item_card__info">
+                  <div className="shop_item_card__info-item">
+                    <span>Бренд:</span> {brand}
+                  </div>
                   <div className="shop_item_card__info-item">
                     <span>Вкус:</span> {taste}
                   </div>
