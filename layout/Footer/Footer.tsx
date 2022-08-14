@@ -4,7 +4,7 @@ import { filterSelect } from "../../components/Filter/filterSelect";
 import { routes } from "../../routes";
 
 import { useRouter } from "next/router";
-import CheckYear from "../../components/CheckYear/CheckYear";
+// import CheckYear from "../../components/CheckYear/CheckYear";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import VidgetCart from "../../components/VidgetCart/VidgetCart";
 import { brandFilter } from "../../store/reducers/filterSlice";
@@ -12,6 +12,14 @@ import { openModalAction } from "../../store/reducers/modalSlice";
 import { useAppSelector } from "../../hooks/useAppSelector";
 import { useAppDispatch } from "../../hooks/useAppDispatch";
 import CallBackForm from "../../components/Forms/CallBackForm";
+import dynamic from "next/dynamic";
+
+const CheckYear = dynamic(
+  () => import("../../components/CheckYear/CheckYear"),
+  {
+    ssr: false,
+  }
+);
 
 const Footer = () => {
   const router = useRouter();

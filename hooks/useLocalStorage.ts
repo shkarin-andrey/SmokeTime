@@ -7,8 +7,10 @@ const useLocalStorage = (
 ) => {
   const [storedValue, setStoredValue] = useState(() => {
     try {
-      const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
+      if (typeof window !== "undefined") {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : initialValue;
+      }
     } catch (error) {
       console.log(error);
       return initialValue;
@@ -20,7 +22,7 @@ const useLocalStorage = (
         value instanceof Function ? value(storedValue) : value;
       setStoredValue(valueToStore);
       if (typeof window !== "undefined") {
-        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+        localStorage.setItem(key, JSON.stringify(valueToStore));
       }
     } catch (error) {
       console.log(error);

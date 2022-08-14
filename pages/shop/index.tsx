@@ -1,6 +1,6 @@
 import ShopCards from "../../components/ShopCards/ShopCards";
 import MainLayout from "../../layout";
-import { GetServerSidePropsContext, NextPage } from "next";
+import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
 import { iData } from "../../type/shopData";
 import { Col, Container, Row } from "reactstrap";
 import Filter from "../../components/Filter/Filter";
@@ -35,7 +35,7 @@ const Shop: NextPage<iData> = ({ shop, pages }) => {
   );
 };
 
-export const getServerSideProps = async (
+export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext
 ) => {
   const { page, brand, strong, volume, search } = context.query;
@@ -46,18 +46,10 @@ export const getServerSideProps = async (
   const queryVolume = volume ? `volume=${volume}&` : "";
   const queryPage = `page=${page}`;
 
-  const url = `${process.env.BASE_URL}/api/shop?limit=21&${
-    querySearch + queryBrand + queryStrong + queryVolume + queryPage
-  }`;
-
   if (brand || strong || volume || page || brand) {
-    const resp = await fetch(url);
-    const shop = await resp.json();
-    return {
-      props: { ...shop },
-    };
-  } else {
-    const url = `${process.env.BASE_URL}/api/shop?limit=21&${queryPage}`;
+    const url = `${process.env.BASE_URL}api/shop?limit=21&${
+      querySearch + queryBrand + queryStrong + queryVolume + queryPage
+    }`;
 
     const resp = await fetch(url);
     const shop = await resp.json();
@@ -65,6 +57,14 @@ export const getServerSideProps = async (
       props: { ...shop },
     };
   }
+
+  const url = `${process.env.BASE_URL}api/shop?limit=21&${queryPage}`;
+
+  const resp = await fetch(url);
+  const shop = await resp.json();
+  return {
+    props: { ...shop },
+  };
 };
 
 export default Shop;

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Button, Col, Container, Input, Row } from "reactstrap";
 import { CSSTransition } from "react-transition-group";
 import support from "../../../public/img/support.jpg";
@@ -17,9 +17,11 @@ const CallBackForm: FC = () => {
   const dispatch = useAppDispatch();
   const { showModal } = useAppSelector((state) => state.openModal);
 
-  showModal
-    ? disableBodyScroll(document.body)
-    : enableBodyScroll(document.body);
+  useEffect(() => {
+    showModal
+      ? disableBodyScroll(document.body)
+      : enableBodyScroll(document.body);
+  }, [showModal]);
 
   const { showAlert } = useAlert();
 
