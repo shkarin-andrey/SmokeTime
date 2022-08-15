@@ -1,6 +1,4 @@
-import Link from "next/link";
 import React, { FC } from "react";
-import { Container, Row, Col } from "reactstrap";
 import Map from "../../components/Map/Map";
 
 const ContactsInfo: FC = () => {
