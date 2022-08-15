@@ -2,7 +2,6 @@ import { FC, useEffect } from "react";
 import ShopCard from "../ShopCard/ShopCard";
 import { iDataItem } from "../../type/shopData";
 import PaginationList from "../Pagination/Pagination";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useAppSelector } from "./../../hooks/useAppSelector";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { iCart } from "../../type/cart";
