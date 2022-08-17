@@ -89,8 +89,12 @@
           font-weight: 700;
           font-size: 24px;
 
-          &.active {
+          &:hover {
             color: $menu-purple;
+          }
+
+          &.active {
+            color: darken($menu-purple, 20);
           }
         }
       }
