@@ -61,6 +61,11 @@
       height: 100vh;
       background: rgba(0, 0, 0, 0.8);
       z-index: 10;
+      animation: fadeIn 0.3s linear;
+
+      .hamburger {
+        opacity: 0;
+      }
 
       .navigate-list {
         display: flex;
@@ -74,6 +79,7 @@
         top: 0;
         left: 0;
         padding: 20px;
+        animation: swipeLeft 0.3s linear;
 
         .close {
           display: block;
@@ -99,5 +105,29 @@
         }
       }
     }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes swipeLeft {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: -50%;
+  }
+  100% {
+    left: 0;
   }
 }

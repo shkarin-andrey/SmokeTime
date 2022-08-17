@@ -3,7 +3,6 @@
   border: 1px solid $purple;
   margin-bottom: 30px;
   transition: all 0.3s;
-  // min-height: 390px;
   justify-content: space-between;
 
   &:hover {
@@ -22,6 +21,7 @@
 
     img {
       transition: all 0.3s;
+      object-fit: cover;
     }
 
     h3 {

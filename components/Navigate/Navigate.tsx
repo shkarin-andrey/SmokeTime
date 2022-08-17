@@ -14,7 +14,12 @@ const Navigate: FC = () => {
   }, [show]);
 
   return (
-    <nav className={`navigate ${show ? "active" : ""}`}>
+    <nav
+      className={`navigate ${show ? "active" : ""}`}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) setShow(false);
+      }}
+    >
       <div className={`hamburger`} onClick={() => setShow(!show)}>
         <span></span>
         <span></span>
