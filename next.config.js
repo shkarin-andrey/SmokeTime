@@ -7,13 +7,6 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
-  env: {
-    // BASE_URL: "http://localhost:3000/",
-    BASE_URL: "https://smoke-time.vercel.app/",
-    NODEMAILER_LOGIN: "shkarinandrew1@gmail.com",
-    NODEMAILER_PASS: "uuwwarmlkjwbkepa",
-    INFO_EMAIL: "smoke-time-opt@mail.ru",
-  },
 };
 
 module.exports = nextConfig;

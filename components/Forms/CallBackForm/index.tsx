@@ -130,12 +130,13 @@ const CallBackForm: FC = () => {
                   lg={6}
                   className="pe-lg-0 px-0 px-lg-2 d-none d-lg-block position-relative"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <Image
                     className="w-100 h-100"
                     src={support}
-                    alt="SmokeTime"
+                    alt="SmokeTimeOpt"
                     layout="fill"
+                    placeholder="blur"
+                    blurDataURL={support.blurDataURL}
                   />
                 </Col>
               </Row>

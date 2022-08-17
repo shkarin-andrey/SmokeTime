@@ -1,9 +1,9 @@
-export interface iData {
+export type iData = {
   shop: iDataItem[];
   pages: number;
-}
+};
 
-export interface iDataItem {
+export type iDataItem = {
   id: string;
   name: string;
   brand: string;
@@ -12,9 +12,9 @@ export interface iDataItem {
   price: number;
   taste: string;
   meta: iMeta;
-}
+};
 
-interface iMeta {
+type iMeta = {
   title: string;
   img?: string;
-}
+};
