@@ -3,8 +3,12 @@ import QuestionsLeft from "../Screens/QuestionsLeft";
 import { Container } from "reactstrap";
 
 const Policy = () => {
+  const title = `Политика в отношении обработки персональных данных оптового интернет-магазина жидкостей для вейпа`;
+  const description =
+    "Покупая жидкость для вейпа (электронных сигарет) всегда следует обращать внимание на собираемую информацию. Будьте внимательны при покупке жидкостей на стороних сайтах.";
+
   return (
-    <MainLayout>
+    <MainLayout title={title} description={description}>
       <Container className="policy">
         <h1 className="big-title mt-5 mt-md-0">
           Политика в отношении обработки персональных данных

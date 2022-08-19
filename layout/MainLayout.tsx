@@ -11,7 +11,10 @@ import { iMainLayout } from "./MainLayout.interface";
 const MainLayout: FC<iMainLayout> = ({
   children,
   title = "Купить жидкости для вейпа оптом",
+  description = "Купить жидкости для вейпа оптом по разумным ценам и с быстрой доставкой от компании SmokeTime",
 }) => {
+  const headTitle = `${title} | SmokeTimeOpt`;
+
   const dispatch = useAppDispatch();
   const [countLocal, setCountLocal] = useLocalStorage("count", 0);
 
@@ -21,29 +24,20 @@ const MainLayout: FC<iMainLayout> = ({
   return (
     <>
       <Head>
-        <title>{title} | SmokeTime</title>
-        <meta name="title" content={`${title} | SmokeTime`} />
-        <meta
-          name="description"
-          content={`Купить жидкости для вейпа оптом по разумным ценам и с быстрой доставкой от компании SmokeTime`}
-        />
+        <title>{headTitle}</title>
+        <meta name="title" content={headTitle} />
+        <meta name="description" content={description} />
 
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://metatags.io/" />
-        <meta property="og:title" content={`${title} | SmokeTime`} />
-        <meta
-          property="og:description"
-          content="Купить жидкости для вейпа оптом по разумным ценам и с быстрой доставкой от компании SmokeTime"
-        />
+        <meta property="og:url" content={process.env.BASE_URL} />
+        <meta property="og:title" content={headTitle} />
+        <meta property="og:description" content={description} />
         <meta property="og:image" content={seoPreviw.src} />
 
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://metatags.io/" />
-        <meta property="twitter:title" content={`${title} | SmokeTime`} />
-        <meta
-          property="twitter:description"
-          content="Купить жидкости для вейпа оптом по разумным ценам и с быстрой доставкой от компании SmokeTime"
-        />
+        <meta property="twitter:url" content={process.env.BASE_URL} />
+        <meta property="twitter:title" content={headTitle} />
+        <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content={seoPreviw.src} />
       </Head>
       <Header />

@@ -28,6 +28,9 @@ const ShopItem: NextPage<iDataItem> = ({
   meta,
   brand,
 }) => {
+  const title = `Купить жидкость для вейпа ${name} за ${price} руб. оптом`;
+  const description = `Купить жижу для вейпа (электронных сигарет) ${name} по оптовой цене всего за ${price} руб. Отличный выбор в интернет-магазине жидкостей для электронных сигарет SmokeTimeOpt`;
+
   const [count, setCount] = useState<number>(1);
   const [cart, setCart] = useLocalStorage("cart", []);
   const [countLocal, setCountLocal] = useLocalStorage("count", 0);
@@ -90,7 +93,7 @@ const ShopItem: NextPage<iDataItem> = ({
   };
 
   return (
-    <MainLayout>
+    <MainLayout title={title} description={description}>
       <Container>
         <h1 className="big-title">
           Жидкость для вейпа <span>{name}</span>

@@ -10,6 +10,9 @@ import { shopActions, pagesActions } from "../../store/reducers/shopSlice";
 import { useEffect } from "react";
 
 const Shop: NextPage<iData> = ({ shop, pages }) => {
+  const title = `Купить оптом жидкость для вейпа по низким ценам`;
+  const description = `Купить брендовые жидкости для вейпа (электронных сигарет) по оптовым ценам. Отличный выбор в интернет-магазине жидкостей для электронных сигарет SmokeTimeOpt`;
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -18,9 +21,9 @@ const Shop: NextPage<iData> = ({ shop, pages }) => {
   }, [shop, pages]);
 
   return (
-    <MainLayout>
+    <MainLayout title={title} description={description}>
       <Container>
-        <h1 className="big-title">Ассортимент жидкостей для вейпа</h1>
+        <h1 className="big-title">Магазин жидкостей для вейпа</h1>
         <Row>
           <Col md={3}>
             <Filter />

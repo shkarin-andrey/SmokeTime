@@ -35,7 +35,7 @@ const Intro: FC = () => {
             </div>
           </Col>
           <Col md={6}>
-            <Image src={mainImg} alt="SmokeTime" />
+            <Image src={mainImg} alt="SmokeTimeOpt" />
           </Col>
         </Row>
       </Container>
