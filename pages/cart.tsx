@@ -8,8 +8,12 @@ const CartPage = dynamic(() => import("../components/CartPage/CartPage"), {
 });
 
 const Cart = () => {
+  const title = `Корзина товаров с жидкостями для вейпа оптового интернет-магазина`;
+  const description =
+    "Принимаем заказы жидкостей для эектронных сигарет по брендам SkyVape, Toyz, VoodoLab, Hotspot, PraidVape и др. Зарабатывайте с нами!";
+
   return (
-    <MainLayout>
+    <MainLayout title={title} description={description}>
       <h1 className="big-title">Корзина</h1>
       <Container>
         <CartPage />

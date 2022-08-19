@@ -1,4 +1,5 @@
 export interface iMainLayout {
   children: JSX.Element[] | JSX.Element;
-  title?: string;
+  title: string;
+  description: string;
 }

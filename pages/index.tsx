@@ -9,9 +9,12 @@ import { context } from "../components/BrandsCards/context";
 import QuestionsLeft from "../Screens/QuestionsLeft";
 
 const Home: NextPage = () => {
+  const title = `Оптовый интернет-магазин жидкостей для вейпа`;
+  const description = `Купить брендовые жидкости для вейпа (электронных сигарет) по оптовым ценам от 200 руб. в интернет-магазине SmokeTimeOpt. Огромный выбор жидкостей для электронных сигарет!`;
+
   return (
     <>
-      <MainLayout>
+      <MainLayout title={title} description={description}>
         <Intro />
         <Why />
         <Brands context={context} btn />
