@@ -2,7 +2,7 @@ import Link from "next/link";
 import { createElement, FC, memo, useCallback } from "react";
 import { iMap } from "./Map.interface";
 
-const Map: FC<iMap> = ({ className, mapInfo = true, height = "300" }) => {
+const Map: FC<iMap> = ({ className = "", mapInfo = true, height = "300" }) => {
   const getMap = useCallback(
     () =>
       createElement("iframe", {

@@ -3,7 +3,7 @@ import { Col, Container, Row } from "reactstrap";
 import QuestionForm from "../../components/Forms/QuestionForm";
 import { iQuestionsLeft } from "./QuestionsLeft.interface.";
 
-const QuestionsLeft: FC<iQuestionsLeft> = ({ className }) => {
+const QuestionsLeft: FC<iQuestionsLeft> = ({ className = "" }) => {
   return (
     <section className="questions_left mb-5">
       <Container>
