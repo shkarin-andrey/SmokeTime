@@ -20,7 +20,7 @@ const Header = () => {
             className="order-2 order-lg-1 text-center text-lg-start"
           >
             <Link href="/">
-              <a className="logo">SmokeTime</a>
+              <a className="logo">SmokeTimeOpt</a>
             </Link>
           </Col>
           <Col xs={2} lg={6} xl={5} className="offset-lg-1 order-1 order-lg-2">
